@@ -1,5 +1,23 @@
 // background colors
-$color-background-darkest:#393E46;
-$color-background-darker:#3FC1C9;
-$color-font-lightest:#F5F5F5;
-$color-font-red:#FC5185;
+$color-background-darkest: #393e46;
+$color-background-darker: #3fc1c9;
+// font colors
+$color-font-lightest: #f5f5f5;
+$color-font-lighter: #9D9D9D;
+$color-font-red: #fc5185;
+// hover font colors
+$color-hover-font-lightest:#FFFFFF;
+// max widths:
+
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+
+$min-width-mobile: 320px;
+$min-width-tablet: 481px;
+$min-width-laptop: 769px;
+$min-width-desktop: 1200px;

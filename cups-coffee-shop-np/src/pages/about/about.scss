@@ -1,0 +1,5 @@
+@import "../../styles/root";
+
+.about {
+  @include marginAllSides10px;
+}

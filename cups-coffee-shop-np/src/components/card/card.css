@@ -30,20 +30,4 @@ body, html {
   padding: 0;
   height: 100%;
 }
-
-.image-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.image-container-child {
-  max-width: 95vw;
-  border-radius: 8px;
-}
-/*# sourceMappingURL=image-container.css.map */
+/*# sourceMappingURL=card.css.map */

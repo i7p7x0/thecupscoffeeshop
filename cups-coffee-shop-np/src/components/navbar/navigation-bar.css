@@ -31,19 +31,28 @@ body, html {
   height: 100%;
 }
 
-.image-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  overflow: hidden;
-  border-radius: 8px;
+.nav-item-wrapper,
+.nav-item-right {
+  text-decoration: none;
+  margin: 0;
 }
 
-.image-container-child {
-  max-width: 95vw;
-  border-radius: 8px;
+.nav-item {
+  color: #9D9D9D;
+  white-space: nowrap;
 }
-/*# sourceMappingURL=image-container.css.map */
+
+.nav-item:hover,
+:focus {
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 769px) {
+  .nav-item-wrapper {
+    margin: 0 30%;
+  }
+  .nav-item-right {
+    margin-left: 30%;
+  }
+}
+/*# sourceMappingURL=navigation-bar.css.map */

@@ -6,16 +6,18 @@ import About from "../pages/about/About";
 import "./App.css";
 
 const App = () => {
+  const about = "/about";
+
   return (
     <div className="app">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="*" element={<Home />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/about" exact element={<About />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>{" "}
     </div>
   );
 };
