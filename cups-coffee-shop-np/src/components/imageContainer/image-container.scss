@@ -1,0 +1,13 @@
+@import "../../styles/root";
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  @include borderRadius8px;
+}
+
+.image-container-child {
+  max-width: 95vw;
+  @include borderRadius8px;
+}

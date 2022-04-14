@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AEEA;;0CAE0C;AAY1C;;0CAE0C;AAY1C;;0CAE0C;AF7B1C,AAAA,IAAI,EAAC,IAAI,CAAA;EACL,MAAM,EAAC,CAAC;EACR,OAAO,EAAC,CAAC;EACT,MAAM,EAAC,IAAI;CACd",
+    "sources": [
+        "root.scss",
+        "style-components/_variables.scss",
+        "style-components/_mixins.scss",
+        "style-components/_variables.scss"
+    ],
+    "names": [],
+    "file": "root.css"
+}

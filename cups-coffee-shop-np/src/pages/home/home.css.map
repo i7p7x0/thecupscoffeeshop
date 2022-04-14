@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AGEA;;0CAE0C;AAY1C;;0CAE0C;AAY1C;;0CAE0C;AF7B1C,AAAA,IAAI,EAAC,IAAI,CAAA;EACL,MAAM,EAAC,CAAC;EACR,OAAO,EAAC,CAAC;EACT,MAAM,EAAC,IAAI;CACd;;ADLD,AAAA,KAAK,CAAA;EGyBD,OAAO,EAAC,IAAI;CHvBf",
+    "sources": [
+        "home.scss",
+        "../../styles/root.scss",
+        "../../styles/style-components/_variables.scss",
+        "../../styles/style-components/_mixins.scss",
+        "../../styles/style-components/_variables.scss"
+    ],
+    "names": [],
+    "file": "home.css"
+}

@@ -1,0 +1,38 @@
+@import "../style-components/_variables";
+
+/*----------------------------------------
+MIXINS for Colors
+----------------------------------------*/
+
+// set background color of an element to darkest background color
+@mixin configDarkestBackgroundColor{
+    background-color:$color-background-darkest;
+}
+
+//set font color of an element to lightest font color
+@mixin configLightestFontColor{
+    color:$color-font-lightest;
+}
+
+/*----------------------------------------
+MIXINS for Margin and Padding
+----------------------------------------*/
+
+
+// set margin of 10 px on all sides
+@mixin marginAllSides10px{
+    margin:10px;
+}
+// set padding of 10 px on all sides
+@mixin paddingAllSides10px{
+    padding:10px;
+}
+
+/*----------------------------------------
+MIXINS for Border
+----------------------------------------*/
+
+// set border radius of 8 px on all sides
+@mixin borderRadius8px{
+    border-radius:8px;
+}

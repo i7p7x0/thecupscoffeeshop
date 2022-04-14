@@ -13,13 +13,7 @@ body, html {
   height: 100%;
 }
 
-.app {
-  background-color: #393E46;
-  color: #F5F5F5;
+.home {
+  padding: 10px;
 }
-
-body {
-  background-color: #393E46;
-  height: 100vh;
-}
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=home.css.map */

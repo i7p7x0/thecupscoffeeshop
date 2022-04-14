@@ -1,0 +1,5 @@
+@import "../../styles/root";
+
+.home{
+    @include paddingAllSides10px;
+}

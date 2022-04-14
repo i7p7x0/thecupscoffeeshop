@@ -13,13 +13,19 @@ body, html {
   height: 100%;
 }
 
-.app {
-  background-color: #393E46;
-  color: #F5F5F5;
+.image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-body {
-  background-color: #393E46;
-  height: 100vh;
+.image-container-child {
+  max-width: 95vw;
+  border-radius: 8px;
 }
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=image-container.css.map */
