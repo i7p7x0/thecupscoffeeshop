@@ -3,3 +3,49 @@
 .about {
   @include marginAllSides10px;
 }
+
+.about-container {
+  display: grid;
+  grid-template-areas:
+    "about-a"
+    "about-b"
+    "about-c"
+    "about-d";
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-child-paragraph {
+  font-style: italic;
+}
+
+// media queries
+
+//tablet layout for about page
+@media screen and (min-width: $min-width-tablet) {
+  .about-container {
+    grid-template-areas:
+      "about-a about-b"
+      "about-c about-d";
+  }
+}
+
+//tablet layout for about page
+@media screen and (min-width: $min-width-laptop) {
+  .about-container {
+    grid-template-areas: "about-a about-b about-c about-d";
+  }
+}
+
+.about-a {
+  grid-area: about-a;
+}
+.about-b {
+  grid-area: about-b;
+}
+.about-c {
+  grid-area: about-c;
+}
+.about-d {
+  grid-area: about-d;
+}

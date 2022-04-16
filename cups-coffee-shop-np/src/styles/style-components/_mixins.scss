@@ -9,6 +9,10 @@ MIXINS for Colors
   background-color: $color-background-darkest;
 }
 
+@mixin configDarkerBackgroundColor {
+  background-color: $color-background-darker;
+}
+
 //set font color of an element to lightest font color
 @mixin configLightestFontColor {
   color: $color-font-lightest;

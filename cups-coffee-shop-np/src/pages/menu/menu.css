@@ -31,10 +31,34 @@ body, html {
   height: 100%;
 }
 
-.card {
-  background-color: #3fc1c9;
-  padding: 10px;
+.menu {
   margin: 10px;
-  border-radius: 8px;
 }
-/*# sourceMappingURL=card.css.map */
+
+.menu-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+}
+
+.menu-child {
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 481px) {
+  .menu-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .menu-container {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+}
+/*# sourceMappingURL=menu.css.map */

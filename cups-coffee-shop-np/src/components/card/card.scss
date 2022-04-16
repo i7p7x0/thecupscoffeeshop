@@ -1,1 +1,8 @@
 @import "../../styles/root";
+
+.card {
+  @include configDarkerBackgroundColor;
+  @include paddingAllSides10px;
+  @include marginAllSides10px;
+  @include borderRadius8px;
+}
