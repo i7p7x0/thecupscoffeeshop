@@ -22,6 +22,10 @@ MIXINS for Colors
   color: $color-font-lighter;
 }
 
+@mixin configDarkestFontColor {
+  color: $color-font-darkest;
+}
+
 /*----------------------------------------
 MIXINS for Hover Colors
 ----------------------------------------*/

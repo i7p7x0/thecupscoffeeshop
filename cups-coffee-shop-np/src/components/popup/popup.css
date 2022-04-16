@@ -31,10 +31,7 @@ body, html {
   height: 100%;
 }
 
-.card {
-  background-color: #524a4e;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 8px;
+.modal {
+  color: #393e46;
 }
-/*# sourceMappingURL=card.css.map */
+/*# sourceMappingURL=popup.css.map */

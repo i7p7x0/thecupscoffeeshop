@@ -1,0 +1,10 @@
+@import "../../styles/root";
+
+.login {
+  @include marginAllSides10px;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -31,10 +31,21 @@ body, html {
   height: 100%;
 }
 
-.card {
-  background-color: #524a4e;
-  padding: 10px;
+.login {
   margin: 10px;
-  border-radius: 8px;
+  height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-/*# sourceMappingURL=card.css.map */
+/*# sourceMappingURL=login.css.map */
