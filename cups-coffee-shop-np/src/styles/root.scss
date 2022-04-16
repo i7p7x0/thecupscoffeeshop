@@ -1,0 +1,8 @@
+@import "./style-components/_variables";
+@import "./style-components/_mixins";
+
+body,html{
+    margin:0;
+    padding:0;
+    height:100%;
+}
