@@ -1,0 +1,26 @@
+@import "../../styles/root";
+
+.edit-form {
+  @include marginAllSides10px;
+}
+
+.edit-form-container {
+  @include configDarkerBackgroundColor;
+  @include paddingAllSides10px;
+  @include borderRadius8px;
+}
+
+.edit-form-header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: $min-width-laptop) {
+  .edit-form {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

@@ -1,0 +1,57 @@
+@import "../../styles/root";
+
+.card {
+  @include paddingAllSides10px;
+  @include marginAllSides10px;
+  @include borderRadius8px;
+}
+
+.card:hover,
+:focus {
+  filter: brightness(80%);
+}
+
+.card-red {
+  @include configRedBackground;
+  @include configLightestFontColor;
+}
+
+.card-blue {
+  @include configBlueBackground;
+  @include configLightestFontColor;
+}
+
+.card-yellow {
+  @include configYellowBackground;
+  @include configDarkestFontColor;
+}
+
+.card-green {
+  @include configGreenBackground;
+  @include configDarkestFontColor;
+}
+
+.card-dark {
+  @include configDarkerBackgroundColor;
+  @include configLightestFontColor;
+}
+
+.card-pink {
+  @include configPinkBackground;
+  @include configDarkestFontColor;
+}
+
+.card-purple {
+  @include configPurpleBackground;
+  @include configLightestFontColor;
+}
+
+.card-orange {
+  @include configOrangeBackground;
+  @include configLightestFontColor;
+}
+
+.card-indigo {
+  @include configIndigoBackground;
+  @include configLightestFontColor;
+}

@@ -1,0 +1,32 @@
+@import "../../styles/root";
+
+// classes for NavLink element from react-router-dom
+.nav-item-wrapper,
+.nav-item-right {
+  text-decoration: none;
+  margin: 0;
+}
+
+// class for nav item spans inside NavLinks
+.nav-item {
+  @include configLighterFontColor;
+  white-space: nowrap;
+}
+
+.nav-item:hover,
+:focus {
+  @include brightenOnHover;
+}
+
+// media queries
+
+@media screen and (min-width: $min-width-laptop) {
+  // remove margin from nav items on mobile and tablet
+  .nav-item-wrapper {
+    margin: 0 10%;
+  }
+
+  .nav-item-right {
+    margin-left: 30%;
+  }
+}

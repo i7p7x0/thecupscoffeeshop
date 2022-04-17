@@ -1,0 +1,34 @@
+// background colors
+$color-background-darkest: #393e46;
+// $color-background-darker: #CC704B;
+$color-background-darker: #524a4e;
+$color-background-yellow: #ffd93d;
+$color-background-red: #ff6b6b;
+$color-background-green: #6bcb77;
+$color-background-blue: #4d96ff;
+$color-background-pink: #f999b7;
+$color-background-purple: #712b75;
+$color-background-orange: #fe7e6d;
+$color-background-indigo: #00a19d;
+
+// font colors
+$color-font-lightest: #f5f5f5;
+$color-font-lighter: #9d9d9d;
+$color-font-darkest: #393e46;
+$color-font-red: #fc5185;
+// hover font colors
+$color-hover-font-lightest: #ffffff;
+// max widths:
+
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+
+$min-width-mobile: 320px;
+$min-width-tablet: 481px;
+$min-width-laptop: 769px;
+$min-width-desktop: 1200px;

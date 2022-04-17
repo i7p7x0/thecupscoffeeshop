@@ -1,0 +1,11 @@
+@import "../styles/root";
+
+.app {
+  @include configDarkestBackgroundColor;
+  @include configLightestFontColor;
+}
+
+body{
+  @include configDarkestBackgroundColor;
+  height:100vh;
+}

@@ -1,0 +1,35 @@
+@import "../../../../styles/root";
+.admin {
+  @include paddingAllSides10px;
+}
+
+.admin-header {
+  display: inline-block;
+}
+
+.admin-edit-info-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-nav-links {
+  text-decoration: none;
+}
+
+// media queries
+
+@media screen and (min-width: $min-width-tablet) {
+  .admin-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: $min-width-laptop) {
+  .admin-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+  }
+}

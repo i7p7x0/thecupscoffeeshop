@@ -1,0 +1,29 @@
+@import "../../styles/root";
+
+.menu {
+  @include marginAllSides10px;
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.menu-child {
+  white-space: nowrap;
+}
+
+//tablet layout for about page
+@media screen and (min-width: $min-width-tablet) {
+  .menu-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+//tablet layout for about page
+@media screen and (min-width: $min-width-laptop) {
+  .menu-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

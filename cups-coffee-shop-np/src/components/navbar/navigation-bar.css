@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+/*----------------------------------------
+MIXINS for Colors
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Hover Colors
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Margin and Padding
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Border
+----------------------------------------*/
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.nav-item-wrapper,
+.nav-item-right {
+  text-decoration: none;
+  margin: 0;
+}
+
+.nav-item {
+  color: #9d9d9d;
+  white-space: nowrap;
+}
+
+.nav-item:hover,
+:focus {
+  color: #ffffff;
+}
+
+@media screen and (min-width: 769px) {
+  .nav-item-wrapper {
+    margin: 0 10%;
+  }
+  .nav-item-right {
+    margin-left: 30%;
+  }
+}
+/*# sourceMappingURL=navigation-bar.css.map */
