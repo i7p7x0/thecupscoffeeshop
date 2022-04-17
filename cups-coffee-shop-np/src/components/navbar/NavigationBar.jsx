@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import * as authenticationActions from "../../stores/actions/Authentication";
+import routes from "../../constants/routes";
 import { NavLink } from "react-router-dom";
 import { CgCoffee } from "react-icons/cg";
 import Popup from "../popup/Popup";
@@ -52,17 +53,17 @@ const NavigationBar = () => {
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <NavLink to="/" className="nav-item-wrapper">
+              <NavLink to={routes.home} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   Home
                 </span>
               </NavLink>
-              <NavLink to="/about" className="nav-item-wrapper">
+              <NavLink to={routes.about} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   About Us
                 </span>
               </NavLink>
-              <NavLink to="/menu" className="nav-item-wrapper">
+              <NavLink to={routes.menu} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   Menu
                 </span>
@@ -70,12 +71,12 @@ const NavigationBar = () => {
             </Nav>
             <Nav>
               {!isLoggedIn ? (
-                <NavLink to="/login" className="nav-item-right">
+                <NavLink to={routes.login} className="nav-item-right">
                   <span className="nav-item">Login</span>
                 </NavLink>
               ) : (
                 <NavLink
-                  to="/"
+                  to={routes.home}
                   className="nav-item-right"
                   onClick={handleLogout}
                 >

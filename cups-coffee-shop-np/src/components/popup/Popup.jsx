@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import routes from "../../constants/routes";
 import "./popup.css";
 const Popup = (props) => {
   const authentication = useSelector((state) => state.authentication);
@@ -27,13 +28,13 @@ const Popup = (props) => {
         </Modal.Body>
         <Modal.Footer>
           {props.loggedInPopup ? (
-            <NavLink to="/admin/dashboard">
+            <NavLink to={routes.adminDashboard}>
               <Button variant="outline-danger" onClick={props.handleModalState}>
                 Close
               </Button>
             </NavLink>
           ) : (
-            <NavLink to="/">
+            <NavLink to={routes.home}>
               <Button variant="outline-danger" onClick={props.handleModalState}>
                 Close
               </Button>

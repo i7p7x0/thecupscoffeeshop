@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Card from "../../../../components/card/Card";
 import { FaInfoCircle } from "react-icons/fa";
+import routes from "../../../../constants/routes";
 import {
   MdRestaurantMenu,
   MdAdminPanelSettings,
@@ -21,7 +22,7 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!authentication.isLoggedIn) {
-      navigate("/");
+      navigate(routes.home);
     }
   }, [authentication.isLoggedIn]);
 
