@@ -31,54 +31,42 @@ body, html {
   height: 100%;
 }
 
-.card {
+.admin {
   padding: 10px;
-  margin: 10px;
-  border-radius: 8px;
 }
 
-.card:hover,
-:focus {
-  -webkit-filter: brightness(80%);
-          filter: brightness(80%);
+.admin-header {
+  display: inline-block;
 }
 
-.card-red {
-  background-color: #ff6b6b;
+.admin-edit-info-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.card-blue {
-  background-color: #4d96ff;
+@media screen and (min-width: 481px) {
+  .admin-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
+  }
 }
 
-.card-yellow {
-  background-color: #ffd93d;
-  color: #393e46;
+@media screen and (min-width: 769px) {
+  .admin-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+  }
 }
-
-.card-green {
-  background-color: #6bcb77;
-  color: #393e46;
-}
-
-.card-dark {
-  background-color: #524a4e;
-}
-
-.card-pink {
-  background-color: #f999b7;
-  color: #393e46;
-}
-
-.card-purple {
-  background-color: #712b75;
-}
-
-.card-orange {
-  background-color: #fe7e6d;
-}
-
-.card-indigo {
-  background-color: #00a19d;
-}
-/*# sourceMappingURL=card.css.map */
+/*# sourceMappingURL=admin.css.map */

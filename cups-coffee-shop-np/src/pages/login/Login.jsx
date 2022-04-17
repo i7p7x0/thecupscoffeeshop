@@ -21,7 +21,6 @@ const Login = () => {
 
   // handles event after login buttton is pressed
   const handleButtonPress = (event) => {
-    console.log(userInput);
     event.preventDefault();
     handleModalState();
     dispatch(authenticationActions.authenticationAction(true));

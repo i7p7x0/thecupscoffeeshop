@@ -31,54 +31,7 @@ body, html {
   height: 100%;
 }
 
-.card {
+.error {
   padding: 10px;
-  margin: 10px;
-  border-radius: 8px;
 }
-
-.card:hover,
-:focus {
-  -webkit-filter: brightness(80%);
-          filter: brightness(80%);
-}
-
-.card-red {
-  background-color: #ff6b6b;
-}
-
-.card-blue {
-  background-color: #4d96ff;
-}
-
-.card-yellow {
-  background-color: #ffd93d;
-  color: #393e46;
-}
-
-.card-green {
-  background-color: #6bcb77;
-  color: #393e46;
-}
-
-.card-dark {
-  background-color: #524a4e;
-}
-
-.card-pink {
-  background-color: #f999b7;
-  color: #393e46;
-}
-
-.card-purple {
-  background-color: #712b75;
-}
-
-.card-orange {
-  background-color: #fe7e6d;
-}
-
-.card-indigo {
-  background-color: #00a19d;
-}
-/*# sourceMappingURL=card.css.map */
+/*# sourceMappingURL=error.css.map */
