@@ -12,6 +12,10 @@
   justify-content: space-between;
 }
 
+.dashboard-nav-links {
+  text-decoration: none;
+}
+
 // media queries
 
 @media screen and (min-width: $min-width-tablet) {

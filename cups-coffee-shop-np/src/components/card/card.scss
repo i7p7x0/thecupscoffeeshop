@@ -13,10 +13,12 @@
 
 .card-red {
   @include configRedBackground;
+  @include configLightestFontColor;
 }
 
 .card-blue {
   @include configBlueBackground;
+  @include configLightestFontColor;
 }
 
 .card-yellow {
@@ -31,6 +33,7 @@
 
 .card-dark {
   @include configDarkerBackgroundColor;
+  @include configLightestFontColor;
 }
 
 .card-pink {
@@ -40,12 +43,15 @@
 
 .card-purple {
   @include configPurpleBackground;
+  @include configLightestFontColor;
 }
 
 .card-orange {
   @include configOrangeBackground;
+  @include configLightestFontColor;
 }
 
 .card-indigo {
   @include configIndigoBackground;
+  @include configLightestFontColor;
 }

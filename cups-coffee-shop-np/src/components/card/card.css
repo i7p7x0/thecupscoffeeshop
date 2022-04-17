@@ -45,10 +45,12 @@ body, html {
 
 .card-red {
   background-color: #ff6b6b;
+  color: #f5f5f5;
 }
 
 .card-blue {
   background-color: #4d96ff;
+  color: #f5f5f5;
 }
 
 .card-yellow {
@@ -63,6 +65,7 @@ body, html {
 
 .card-dark {
   background-color: #524a4e;
+  color: #f5f5f5;
 }
 
 .card-pink {
@@ -72,13 +75,16 @@ body, html {
 
 .card-purple {
   background-color: #712b75;
+  color: #f5f5f5;
 }
 
 .card-orange {
   background-color: #fe7e6d;
+  color: #f5f5f5;
 }
 
 .card-indigo {
   background-color: #00a19d;
+  color: #f5f5f5;
 }
 /*# sourceMappingURL=card.css.map */

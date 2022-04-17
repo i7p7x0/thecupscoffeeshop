@@ -48,6 +48,10 @@ body, html {
           justify-content: space-between;
 }
 
+.dashboard-nav-links {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 481px) {
   .admin-container {
     display: -ms-grid;

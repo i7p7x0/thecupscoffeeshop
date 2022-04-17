@@ -1,1 +1,21 @@
 @import "../../../../styles/root";
+
+.edit-info-select-form {
+  @include configDarkestFontColor;
+  font-weight: bold;
+}
+
+.edit-info-input-group {
+  @include configDarkestFontColor;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  width: 20%;
+}
