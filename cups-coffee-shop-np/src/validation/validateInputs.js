@@ -1,4 +1,3 @@
-const errorMessages = [];
 // check if the input field is empty, null or undefined
 const validateEmptyFields = (field) => {
   let validated = true;

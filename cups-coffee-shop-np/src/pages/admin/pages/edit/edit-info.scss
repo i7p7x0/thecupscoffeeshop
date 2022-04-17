@@ -9,3 +9,12 @@
   @include configDarkestFontColor;
   // font-weight: bold;
 }
+
+.edit-info-error {
+  @include configRedFontColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include marginAllSides10px;
+  font-weight: bold;
+}

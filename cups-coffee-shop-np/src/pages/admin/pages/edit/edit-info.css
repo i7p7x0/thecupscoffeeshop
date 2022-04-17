@@ -38,4 +38,19 @@ body, html {
 .edit-info-input-group {
   color: #393e46;
 }
+
+.edit-info-error {
+  color: #fc5185;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+  font-weight: bold;
+}
 /*# sourceMappingURL=edit-info.css.map */

@@ -291,10 +291,34 @@ const EditInfo = (props) => {
     event.preventDefault();
     let validated = validations.validateContactDetail(userInput);
     if (validated) {
+      alert("Hello World");
       setInputValidated("1");
     } else if (!validated) {
       setInputValidated("0");
     }
+  };
+
+  // handle clear inputs
+  const handleClearInput = (event) => {
+    event.preventDefault();
+    setInputValidated("-1");
+    setUserInput({
+      emailAddress: "",
+      contactNumber: "",
+      location: "",
+      instagramHandle: "",
+      timings: "",
+      openingTime: {
+        hh: "",
+        mm: "",
+        cycle: "",
+      },
+      closingTime: {
+        hh: "",
+        mm: "",
+        cycle: "",
+      },
+    });
   };
 
   return (
@@ -452,11 +476,15 @@ const EditInfo = (props) => {
               </InputGroup>
             </>
           ) : null}
-          {inputValidated === "0" ? <div>test</div> : null}
+          {inputValidated === "0" ? (
+            <div className="edit-info-error">invalid input*</div>
+          ) : null}
           <Button variant="success mx-3" onClick={handleButtonClick}>
             Submit
           </Button>
-          <Button variant="danger">Clear</Button>
+          <Button variant="danger" onClick={handleClearInput}>
+            Clear
+          </Button>
           <Link to={routes.adminDashboard}>
             <Button variant="secondary mx-3">Go Back</Button>
           </Link>

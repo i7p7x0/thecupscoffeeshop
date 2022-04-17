@@ -51,6 +51,10 @@ MIXINS for Colors
   color: $color-font-darkest;
 }
 
+@mixin configRedFontColor{
+  color:$color-font-red;
+}
+
 /*----------------------------------------
 MIXINS for Hover Colors
 ----------------------------------------*/
