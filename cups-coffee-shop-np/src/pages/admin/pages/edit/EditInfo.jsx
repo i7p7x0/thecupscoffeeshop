@@ -290,7 +290,6 @@ const EditInfo = (props) => {
   const handleButtonClick = (event) => {
     event.preventDefault();
     let validated = validations.validateContactDetail(userInput);
-    console.log(validated);
     if (validated) {
       setInputValidated("1");
     } else if (!validated) {
