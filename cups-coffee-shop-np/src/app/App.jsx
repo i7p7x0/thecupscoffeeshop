@@ -9,7 +9,7 @@ import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import Menu from "../pages/menu/Menu";
 import Login from "../pages/login/Login";
-import Admin from "../pages/admin/Admin";
+import Dashboard from "../pages/admin/pages/dashboard/Dashboard";
 import Error from "../pages/error/Error";
 import "./App.css";
 
@@ -31,7 +31,7 @@ const App = () => {
             <Route path="/about" exact element={<About />} />
             <Route path="/menu" exact element={<Menu />} />
             <Route path="/login" exact element={<Login />} />
-            <Route path="/admin" exact element={<Admin />} />
+            <Route path="/admin/dashboard" exact element={<Dashboard />} />
             <Route path="/error" exact element={<Error />} />
           </Routes>
         </BrowserRouter>

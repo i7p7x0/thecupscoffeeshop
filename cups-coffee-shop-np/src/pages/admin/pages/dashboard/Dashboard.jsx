@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Card from "../../components/card/Card";
+import Card from "../../../../components/card/Card";
 import { FaInfoCircle } from "react-icons/fa";
 import {
   MdRestaurantMenu,
@@ -12,8 +12,8 @@ import {
   MdCoffeeMaker,
 } from "react-icons/md";
 import { RiFolderUserFill } from "react-icons/ri";
-import "./admin.css";
-const Admin = (props) => {
+import "./dashboard.css";
+const Dashboard = (props) => {
   // check if user is authenticated
   const authentication = useSelector((state) => state.authentication);
 
@@ -166,4 +166,4 @@ const Admin = (props) => {
   );
 };
 
-export default Admin;
+export default Dashboard;

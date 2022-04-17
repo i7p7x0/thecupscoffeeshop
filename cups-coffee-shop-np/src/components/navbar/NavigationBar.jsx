@@ -59,9 +59,9 @@ const NavigationBar = () => {
               </NavDropdown> */}
             </Nav>
             <Nav>
-              <NavLink to="/menu" className="nav-item-right">
+              {/* <NavLink to="/menu" className="nav-item-right">
                 <span className="nav-item">Sign Up</span>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/login" className="nav-item-right">
                 <span className="nav-item">Login</span>
               </NavLink>

@@ -28,7 +28,7 @@ const Popup = (props) => {
             : "No user with such credentials exists."}
         </Modal.Body>
         <Modal.Footer>
-          <NavLink to="/admin">
+          <NavLink to="/admin/dashboard">
             <Button variant="outline-danger" onClick={props.handleModalState}>
               Close
             </Button>
