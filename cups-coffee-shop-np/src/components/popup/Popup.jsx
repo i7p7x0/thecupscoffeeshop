@@ -19,20 +19,26 @@ const Popup = (props) => {
           <Modal.Title>
             {authentication.isLoggedIn
               ? "Logged In Successfully!"
-              : "Invalid Credentials"}
+              : props.title}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {authentication.isLoggedIn
-            ? "Welcome to Admin view."
-            : "No user with such credentials exists."}
+          {authentication.isLoggedIn ? "Welcome to Admin view." : props.body}
         </Modal.Body>
         <Modal.Footer>
-          <NavLink to="/admin/dashboard">
-            <Button variant="outline-danger" onClick={props.handleModalState}>
-              Close
-            </Button>
-          </NavLink>
+          {props.loggedInPopup ? (
+            <NavLink to="/admin/dashboard">
+              <Button variant="outline-danger" onClick={props.handleModalState}>
+                Close
+              </Button>
+            </NavLink>
+          ) : (
+            <NavLink to="/">
+              <Button variant="outline-danger" onClick={props.handleModalState}>
+                Close
+              </Button>
+            </NavLink>
+          )}
         </Modal.Footer>
       </Modal>
     </>

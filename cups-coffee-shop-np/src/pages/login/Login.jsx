@@ -11,13 +11,13 @@ const Login = () => {
   const dispatch = useDispatch();
   // state that handles whether or not modal is open
   const [show, setShow] = useState(false);
+  // changes modal state
+  const handleModalState = () => setShow(!show);
   // state that keeps track of user input
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
   });
-  // changes modal state
-  const handleModalState = () => setShow(!show);
 
   // handles event after login buttton is pressed
   const handleButtonPress = (event) => {
@@ -83,7 +83,13 @@ const Login = () => {
         <Button variant="outline-primary" onClick={handleButtonPress}>
           Login
         </Button>
-        <Popup handleModalState={handleModalState} show={show} />
+        <Popup
+          handleModalState={handleModalState}
+          show={show}
+          loggedInPopup={true}
+          title={"Invalid credentials!"}
+          body={"No user with such credentials exists"}
+        />
       </Form>
     </div>
   );

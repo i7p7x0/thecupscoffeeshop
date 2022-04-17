@@ -21,7 +21,7 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!authentication.isLoggedIn) {
-      navigate("/error");
+      navigate("/");
     }
   }, [authentication.isLoggedIn]);
 
