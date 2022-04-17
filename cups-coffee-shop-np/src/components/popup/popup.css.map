@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": ";AEsBA;;;;;;EAME;AANF;;;;;;EAME;AC1BF;;0CAE0C;AAiD1C;;0CAE0C;AAK1C;;0CAE0C;AAW1C;;0CAE0C;AFxE1C,AAAA,IAAI,EAAC,IAAI,CAAA;EACL,MAAM,EAAC,CAAC;EACR,OAAO,EAAC,CAAC;EACT,MAAM,EAAC,IAAI;CACd;;ADFD,AAAA,WAAW,CAAC;EG6CV,KAAK,EDlCc,OAAO;CFT3B",
+    "sources": [
+        "popup.scss",
+        "../../styles/root.scss",
+        "../../styles/style-components/_variables.scss",
+        "../../styles/style-components/_mixins.scss",
+        "../../styles/style-components/_variables.scss"
+    ],
+    "names": [],
+    "file": "popup.css"
+}

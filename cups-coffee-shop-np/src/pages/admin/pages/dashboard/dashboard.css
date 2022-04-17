@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+120px and more —  Extra large screens, TV
+*/
+/*----------------------------------------
+MIXINS for Colors
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Hover Colors
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Margin and Padding
+----------------------------------------*/
+/*----------------------------------------
+MIXINS for Border
+----------------------------------------*/
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.admin {
+  padding: 10px;
+}
+
+.admin-header {
+  display: inline-block;
+}
+
+.admin-edit-info-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard-nav-links {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 481px) {
+  .admin-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .admin-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+  }
+}
+/*# sourceMappingURL=dashboard.css.map */

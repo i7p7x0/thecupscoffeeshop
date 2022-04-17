@@ -1,11 +1,24 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import * as authenticationActions from "../../stores/actions/Authentication";
+import routes from "../../constants/routes";
 import { NavLink } from "react-router-dom";
 import { CgCoffee } from "react-icons/cg";
+import Popup from "../popup/Popup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navigation-bar.css";
 
 const NavigationBar = () => {
+  const dispatch = useDispatch();
+  // decide what to render in the navbar based on whether the user is logged in or not
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const authentication = useSelector((state) => state.authentication);
+  // change logged in state everytime authentication status changes
+  useEffect(() => {
+    setIsLoggedIn(authentication.isLoggedIn);
+  }, [authentication.isLoggedIn]);
   // this state handles whether or not to expand navbar body on mobile and tablet view
   const [navbarExpanded, setNavbarExpanded] = useState(false);
 
@@ -13,6 +26,18 @@ const NavigationBar = () => {
   const handleNavbarClick = () => {
     setNavbarExpanded(!navbarExpanded);
   };
+
+  // dispatch logout action
+  const handleLogout = () => {
+    dispatch(authenticationActions.authenticationAction(false));
+    handleModalState();
+    return;
+  };
+
+  // state that handles whether or not modal is open
+  const [show, setShow] = useState(false);
+  // changes modal state
+  const handleModalState = () => setShow(!show);
 
   return (
     <div>
@@ -28,47 +53,57 @@ const NavigationBar = () => {
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <NavLink to="/" className="nav-item-wrapper">
+              <NavLink to={routes.home} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   Home
                 </span>
               </NavLink>
-              <NavLink to="/about" className="nav-item-wrapper">
+              <NavLink to={routes.about} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   About Us
                 </span>
               </NavLink>
-              <NavLink to="/menu" className="nav-item-wrapper">
+              <NavLink to={routes.menu} className="nav-item-wrapper">
                 <span className="nav-item" onClick={handleNavbarClick}>
                   Menu
                 </span>
               </NavLink>
-
-              {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown> */}
+              {isLoggedIn ? (
+                <NavLink
+                  to={routes.adminDashboard}
+                  className="nav-item-wrapper"
+                >
+                  <span className="nav-item" onClick={handleNavbarClick}>
+                    Dashboard
+                  </span>
+                </NavLink>
+              ) : null}
             </Nav>
             <Nav>
-              <NavLink to="/menu" className="nav-item-right">
-                <span className="nav-item">Sign Up</span>
-              </NavLink>
-              <NavLink to="/menu" className="nav-item-right">
-                <span className="nav-item">Login</span>
-              </NavLink>
+              {!isLoggedIn ? (
+                <NavLink to={routes.login} className="nav-item-right">
+                  <span className="nav-item">Login</span>
+                </NavLink>
+              ) : (
+                <NavLink
+                  to={routes.home}
+                  className="nav-item-right"
+                  onClick={handleLogout}
+                >
+                  <span className="nav-item">Logout</span>
+                </NavLink>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Popup
+        handleModalState={handleModalState}
+        show={show}
+        loggedInPopup={false}
+        title={"Success!"}
+        body={"Logged out successfully"}
+      />
     </div>
   );
 };
