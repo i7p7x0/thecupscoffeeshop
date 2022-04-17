@@ -33,13 +33,13 @@ const Popup = (props) => {
         <Modal.Footer>
           {props.loggedInPopup ? (
             <NavLink to={routes.adminDashboard}>
-              <Button variant="outline-danger" onClick={props.handleModalState}>
+              <Button variant="primary" onClick={props.handleModalState}>
                 Close
               </Button>
             </NavLink>
           ) : (
             <NavLink to={routes.home}>
-              <Button variant="outline-danger" onClick={props.handleModalState}>
+              <Button variant="primary" onClick={props.handleModalState}>
                 Close
               </Button>
             </NavLink>
