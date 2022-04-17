@@ -30,4 +30,25 @@ body, html {
   padding: 0;
   height: 100%;
 }
+
+.edit-info-select-form {
+  color: #393e46;
+  font-weight: bold;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.button {
+  width: 20%;
+}
 /*# sourceMappingURL=edit-menu.css.map */

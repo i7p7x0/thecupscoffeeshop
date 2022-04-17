@@ -4,6 +4,7 @@ import EditForm from "../../../../components/editForm/EditForm";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import routes from "../../../../constants/routes";
+import { Link } from "react-router-dom";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 
 const EditInfo = (props) => {
@@ -120,17 +121,11 @@ const EditInfo = (props) => {
               <option value="PM">PM</option>
             </Form.Select>
           </InputGroup>
-          <div className="button-container">
-            <Button variant="success mx-3" className="button">
-              Submit
-            </Button>{" "}
-            <Button variant="secondary mx-3" className="button">
-              Go Back
-            </Button>
-            <Button variant="danger" className="button">
-              Clear
-            </Button>
-          </div>
+          <Button variant="success mx-3">Submit</Button>
+          <Button variant="danger">Clear</Button>
+          <Link to={routes.adminDashboard}>
+            <Button variant="secondary mx-3">Go Back</Button>
+          </Link>
         </Form>
       </EditForm>
     </div>

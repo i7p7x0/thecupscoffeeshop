@@ -68,6 +68,16 @@ const NavigationBar = () => {
                   Menu
                 </span>
               </NavLink>
+              {isLoggedIn ? (
+                <NavLink
+                  to={routes.adminDashboard}
+                  className="nav-item-wrapper"
+                >
+                  <span className="nav-item" onClick={handleNavbarClick}>
+                    Dashboard
+                  </span>
+                </NavLink>
+              ) : null}
             </Nav>
             <Nav>
               {!isLoggedIn ? (
