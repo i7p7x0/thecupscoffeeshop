@@ -96,7 +96,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminEditInfo}>
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard} >
             <Card cardType="green">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Analytics</h4>
@@ -114,7 +114,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminEditInfo}>
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard}>
             <Card cardType="indigo">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Profit</h4>
@@ -132,7 +132,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminEditInfo}>
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard}>
             <Card cardType="orange">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Developer</h4>
@@ -150,7 +150,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminEditInfo}>
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard}>
             <Card cardType="pink">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Customers</h4>
@@ -168,7 +168,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminEditInfo}>
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard}>
             <Card cardType="purple">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Items</h4>
