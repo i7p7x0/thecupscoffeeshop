@@ -107,6 +107,7 @@ const NavigationBar = () => {
         loggedInPopup={false}
         title={"Success!"}
         body={"Logged out successfully"}
+        route={routes.home}
       />
     </div>
   );
