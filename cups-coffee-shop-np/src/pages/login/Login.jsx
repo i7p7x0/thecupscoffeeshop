@@ -6,6 +6,7 @@ import * as authenticationActions from "../../stores/actions/Authentication";
 import Popup from "../../components/popup/Popup";
 import "./login.css";
 import { NavLink } from "react-router-dom";
+import routes from "../../constants/routes";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const Login = () => {
           loggedInPopup={true}
           title={"Invalid credentials!"}
           body={"No user with such credentials exists"}
+          route={routes.adminDashboard}
         />
       </Form>
     </div>

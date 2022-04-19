@@ -1,10 +1,16 @@
-import { React } from "react";
+import { React, useState } from "react";
 import EditForm from "../../../../components/editForm/EditForm";
 import { Form, Button } from "react-bootstrap";
 import routes from "../../../../constants/routes";
 import { Link } from "react-router-dom";
 import "./edit-password.css";
 const EditPassword = (props) => {
+  // state to track user input passwords
+  const [password, setPassword] = useState({
+    oldPassword: "",
+    newPassword: "",
+  });
+
   return (
     <div className="edit-password">
       <EditForm header={"Change Password"}>

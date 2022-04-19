@@ -33,10 +33,14 @@ body, html {
 
 .edit-info-select-form {
   color: #393e46;
-  font-weight: bold;
 }
 
-.button-container {
+.edit-info-input-group {
+  color: #393e46;
+}
+
+.edit-info-error {
+  color: #fc5185;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,9 +50,7 @@ body, html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.button {
-  width: 20%;
+  margin: 10px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=edit-menu.css.map */

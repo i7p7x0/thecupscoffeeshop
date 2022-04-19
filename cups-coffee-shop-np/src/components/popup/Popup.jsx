@@ -31,19 +31,11 @@ const Popup = (props) => {
           </span>
         </Modal.Body>
         <Modal.Footer>
-          {props.loggedInPopup ? (
-            <NavLink to={routes.adminDashboard}>
-              <Button variant="outline-danger" onClick={props.handleModalState}>
-                Close
-              </Button>
-            </NavLink>
-          ) : (
-            <NavLink to={routes.home}>
-              <Button variant="outline-danger" onClick={props.handleModalState}>
-                Close
-              </Button>
-            </NavLink>
-          )}
+          <NavLink to={props.route}>
+            <Button variant="primary" onClick={props.handleModalState}>
+              Close
+            </Button>
+          </NavLink>
         </Modal.Footer>
       </Modal>
     </>

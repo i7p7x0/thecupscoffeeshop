@@ -82,7 +82,9 @@ const NavigationBar = () => {
             <Nav>
               {!isLoggedIn ? (
                 <NavLink to={routes.login} className="nav-item-right">
-                  <span className="nav-item">Login</span>
+                  <span className="nav-item" onClick={handleNavbarClick}>
+                    Login
+                  </span>
                 </NavLink>
               ) : (
                 <NavLink
@@ -90,7 +92,9 @@ const NavigationBar = () => {
                   className="nav-item-right"
                   onClick={handleLogout}
                 >
-                  <span className="nav-item">Logout</span>
+                  <span className="nav-item" onClick={handleNavbarClick}>
+                    Logout
+                  </span>
                 </NavLink>
               )}
             </Nav>
@@ -103,6 +107,7 @@ const NavigationBar = () => {
         loggedInPopup={false}
         title={"Success!"}
         body={"Logged out successfully"}
+        route={routes.home}
       />
     </div>
   );
