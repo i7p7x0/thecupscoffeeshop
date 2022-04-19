@@ -135,4 +135,30 @@ const validateContactDetail = (contactDetail) => {
   return validated;
 };
 
+// validate item Price, item name and item category
+
+const validateItem = (item) => {
+  let validated = true;
+  if (
+    !validateEmptyFields(item.itemCategory) ||
+    !validateEmptyFields(item.itemName) ||
+    !validateEmptyFields(item.itemPrice)
+  ) {
+    //   check if any of the input field is empty undefined or null
+    validated = false;
+    return false;
+  }
+  if (
+    !validateLength(item.itemCategory.replace(/\s/g, ""), 5, 20) ||
+    !validateLength(item.itemName.replace(/\s/g, ""), 5, 20) ||
+    !validateLength(item.itemPrice.replace(/\s/g, ""), 1, 5)
+  ) {
+    //   check if any of the input field exceeds or preceeds allowed length
+    validated = false;
+    return false;
+  }
+  return validated;
+};
+
+exports.validateItem = validateItem;
 exports.validateContactDetail = validateContactDetail;

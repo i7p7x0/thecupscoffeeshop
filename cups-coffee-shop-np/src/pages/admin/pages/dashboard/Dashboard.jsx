@@ -96,7 +96,7 @@ const Dashboard = (props) => {
           </NavLink>
         </div>
         <div className="admin-child admin-edit-menu-button">
-          <NavLink className="dashboard-nav-links" to={routes.adminDashboard} >
+          <NavLink className="dashboard-nav-links" to={routes.adminDashboard}>
             <Card cardType="green">
               <div className="admin-edit-info-header">
                 <h4 className="admin-header">Analytics</h4>

@@ -5,7 +5,7 @@ import routes from "../../../../constants/routes";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import menu from "../../../../data/menu";
-
+import * as validations from "../../../../validation/validateInputs";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./edit-menu.css";
@@ -26,7 +26,7 @@ const EditMenu = (props) => {
   const [updateItem, setUpdateItem] = useState({
     parentId: "",
     itemId: "",
-    itemCategory: "",
+    itemCategory: "default",
     itemName: "",
     itemPrice: "",
     deleteFlag: false,
@@ -34,10 +34,13 @@ const EditMenu = (props) => {
 
   // tracks state of item that is being added
   const [newItem, setNewItem] = useState({
-    itemCategory: "",
+    itemCategory: "default",
     itemName: "",
     itemPrice: "",
   });
+
+  // state that tracks whether or not an input is validated
+  const [inputValidated, setInputValidated] = useState("-1");
 
   // handles updates and delete changes
   const handleUpdateChanges = (event) => {
@@ -131,10 +134,11 @@ const EditMenu = (props) => {
 
   // method to clear updateItem
   const clearUpdateItem = () => {
+    setInputValidated("-1");
     setUpdateItem({
       parentId: "",
       itemId: "",
-      itemCategory: "",
+      itemCategory: "default",
       itemName: "",
       itemPrice: "",
       deleteFlag: false,
@@ -142,8 +146,9 @@ const EditMenu = (props) => {
   };
   // method to clear new item
   const clearNewItem = () => {
+    setInputValidated("-1");
     setNewItem({
-      itemCategory: "",
+      itemCategory: "default",
       itemName: "",
       itemPrice: "",
     });
@@ -152,23 +157,44 @@ const EditMenu = (props) => {
   // handle clear press
   const handleClearButtonPress = (event) => {
     event.preventDefault();
+
     clearUpdateItem();
     clearNewItem();
   };
 
   // handle submit button press
-  const handleSubmitMenu = () => {
-    console.log(updateItem);
-    console.log(newItem);
+  const handleSubmitMenu = (event) => {
+    event.preventDefault();
+    if (
+      newItem.itemCategory !== "default" &&
+      updateItem.itemCategory === "default"
+    ) {
+      if (validations.validateItem(newItem)) {
+        setInputValidated("1");
+      } else if (!validations.validateItem(newItem)) {
+        setInputValidated("0");
+      }
+    }
+    if (
+      newItem.itemCategory === "default" &&
+      updateItem.itemCategory !== "default"
+    ) {
+      if (validations.validateItem(updateItem)) {
+        setInputValidated("1");
+      } else if (!validations.validateItem(updateItem)) {
+        setInputValidated("0");
+      }
+    }
   };
 
   return (
     <div className="edit-menu">
       <EditForm header={"Edit your shop menu"}>
         <Form>
-          {(updateItem.itemName.length === 0 &&
-            newItem.itemName.length === 0) ||
-          (updateItem.itemName.length > 0 && newItem.itemName.length === 0) ? (
+          {(updateItem.itemCategory === "default" &&
+            newItem.itemCategory === "default") ||
+          (updateItem.itemCategory !== "default" &&
+            newItem.itemCategory === "default") ? (
             <>
               <Form.Select
                 aria-label="Edit a menu item"
@@ -176,6 +202,7 @@ const EditMenu = (props) => {
                 className="edit-info-select-form mb-3"
                 id="edit-menu-update-select"
                 onChange={handleUpdateChanges}
+                value={updateItem.itemCategory}
               >
                 <option value="default" disabled>
                   --Select a menu item to edit--
@@ -226,9 +253,10 @@ const EditMenu = (props) => {
             </>
           ) : null}
           {/* update existing item's price */}
-          {(updateItem.itemName.length === 0 &&
-            newItem.itemName.length === 0) ||
-          (updateItem.itemName.length === 0 && newItem.itemName.length > 0) ? (
+          {(updateItem.itemCategory === "default" &&
+            newItem.itemCategory === "default") ||
+          (updateItem.itemCategory === "default" &&
+            newItem.itemCategory !== "default") ? (
             <>
               <span>or</span>
               <br />
@@ -244,6 +272,7 @@ const EditMenu = (props) => {
                   className="edit-info-select-form"
                   id="edit-add-item-select"
                   onChange={handleAddItem}
+                  value={newItem.itemCategory}
                 >
                   <option value="default" disabled>
                     --Category--
@@ -275,6 +304,9 @@ const EditMenu = (props) => {
                 />
               </InputGroup>
             </>
+          ) : null}
+          {inputValidated === "0" ? (
+            <div className="edit-info-error">invalid input*</div>
           ) : null}
           <Button variant="success mx-3" onClick={handleSubmitMenu}>
             Submit
