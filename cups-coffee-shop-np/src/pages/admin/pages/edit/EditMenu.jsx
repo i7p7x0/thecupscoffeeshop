@@ -198,7 +198,6 @@ const EditMenu = (props) => {
             <>
               <Form.Select
                 aria-label="Edit a menu item"
-                defaultValue="default"
                 className="edit-info-select-form mb-3"
                 id="edit-menu-update-select"
                 onChange={handleUpdateChanges}
@@ -268,7 +267,6 @@ const EditMenu = (props) => {
                 </InputGroup.Text>
                 <Form.Select
                   aria-label="select-timings"
-                  defaultValue={"default"}
                   className="edit-info-select-form"
                   id="edit-add-item-select"
                   onChange={handleAddItem}
