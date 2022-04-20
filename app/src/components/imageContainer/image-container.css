@@ -43,7 +43,8 @@ body, html {
 }
 
 .image-container-child {
-  max-width: 95vw;
   border-radius: 8px;
+  max-width: 100%;
+  max-height: 100%;
 }
 /*# sourceMappingURL=image-container.css.map */

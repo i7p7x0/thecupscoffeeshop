@@ -55,7 +55,7 @@ body, html {
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 821px) {
   .menu-container {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);

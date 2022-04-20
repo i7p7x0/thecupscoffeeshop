@@ -47,7 +47,7 @@ body, html {
   color: #ffffff;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 821px) {
   .nav-item-wrapper {
     margin: 0 10%;
   }

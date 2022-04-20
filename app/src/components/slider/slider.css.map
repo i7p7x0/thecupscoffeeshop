@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": ";AEsBA;;;;;;EAME;AANF;;;;;;EAME;AC1BF;;0CAE0C;AAqD1C;;0CAE0C;AAK1C;;0CAE0C;AAW1C;;0CAE0C;AF5E1C,AAAA,IAAI,EAAC,IAAI,CAAA;EACL,MAAM,EAAC,CAAC;EACR,OAAO,EAAC,CAAC;EACT,MAAM,EAAC,IAAI;CACd;;ADLD,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;CACpB;;AAED,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;CACpB;;AAED,AAAA,iBAAiB,CAAC;EAChB,UAAU,EAAE,MAAM;CACnB",
+    "sources": [
+        "slider.scss",
+        "../../styles/root.scss",
+        "../../styles/style-components/_variables.scss",
+        "../../styles/style-components/_mixins.scss",
+        "../../styles/style-components/_variables.scss"
+    ],
+    "names": [],
+    "file": "slider.css"
+}

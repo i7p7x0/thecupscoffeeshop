@@ -1,5 +1,30 @@
 @import "../../styles/root";
 
-.home{
-    @include paddingAllSides10px;
+.home {
+  @include paddingAllSides10px;
+}
+
+.home-childhome-content {
+  @include marginAllSides10px;
+}
+
+@media screen and (min-width: $min-width-laptop) {
+  .home-container {
+    display: grid;
+    grid-template-areas: "image content";
+
+    .home-image {
+      width: 100%;
+      grid-area: image;
+    }
+    .home-content {
+      grid-area: content;
+    }
+  }
+
+  .home-childhome-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

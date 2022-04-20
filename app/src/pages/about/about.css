@@ -57,7 +57,7 @@ body, html {
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 821px) {
   .about-container {
         grid-template-areas: "about-a about-b about-c about-d";
   }

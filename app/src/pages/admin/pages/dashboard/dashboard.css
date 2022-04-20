@@ -63,7 +63,7 @@ body, html {
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 821px) {
   .admin-container {
     display: -ms-grid;
     display: grid;
