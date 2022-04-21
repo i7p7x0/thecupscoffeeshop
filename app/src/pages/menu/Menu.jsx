@@ -3,6 +3,8 @@ import Card from "../../components/card/Card";
 import menu from "../../data/menu";
 import "./menu.css";
 
+import { GiCoffeeCup, GiHealthPotion, GiSlicedBread } from "react-icons/gi";
+import { FaCocktail } from "react-icons/fa";
 const Menu = (props) => {
   const maxMenuItemLength = 40;
 
@@ -23,7 +25,20 @@ const Menu = (props) => {
           return (
             <div className="menu-child" key={m._id}>
               <Card key={m._id}>
-                <h4 className="menu-category-header">{m.category}</h4>
+                <div className="menu-header">
+                  <h4 className="menu-category-header">{m.category}</h4>
+                  <span>
+                    {m.category === "Hot Beverages" ? (
+                      <GiCoffeeCup size={32} />
+                    ) : m.category === "Iced Beverages" ? (
+                      <FaCocktail size={32} />
+                    ) : m.category === "Refresher" ? (
+                      <GiHealthPotion size={32} />
+                    ) : m.category === "Food" ? (
+                      <GiSlicedBread size={32} />
+                    ) : null}
+                  </span>
+                </div>
                 <hr />
                 <ul>
                   {m.items.map((item) => {

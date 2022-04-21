@@ -10,6 +10,11 @@
   grid-template-rows: auto;
 }
 
+.menu-header {
+  display: flex;
+  justify-content: space-around;
+}
+
 .menu-child {
   white-space: nowrap;
 }
