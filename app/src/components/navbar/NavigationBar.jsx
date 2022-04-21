@@ -54,37 +54,92 @@ const NavigationBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavLink to={routes.home} className="nav-item-wrapper">
-                <span className="nav-item" onClick={handleNavbarClick}>
-                  Home
-                </span>
+                {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      Home
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      Home
+                    </span>
+                  )
+                }
               </NavLink>
               <NavLink to={routes.about} className="nav-item-wrapper">
-                <span className="nav-item" onClick={handleNavbarClick}>
-                  About Us
-                </span>
+                {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      About Us
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      About Us
+                    </span>
+                  )
+                }
               </NavLink>
               <NavLink to={routes.menu} className="nav-item-wrapper">
-                <span className="nav-item" onClick={handleNavbarClick}>
-                  Menu
-                </span>
+                {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      Menu
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      Menu
+                    </span>
+                  )
+                }
               </NavLink>
               {isLoggedIn ? (
                 <NavLink
                   to={routes.adminDashboard}
                   className="nav-item-wrapper"
                 >
-                  <span className="nav-item" onClick={handleNavbarClick}>
-                    Dashboard
-                  </span>
+                 {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      Dashboard
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      Dashboard
+                    </span>
+                  )
+                }
                 </NavLink>
               ) : null}
             </Nav>
             <Nav>
               {!isLoggedIn ? (
                 <NavLink to={routes.login} className="nav-item-right">
-                  <span className="nav-item" onClick={handleNavbarClick}>
-                    Login
-                  </span>
+                  {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      Login
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      Login
+                    </span>
+                  )
+                }
                 </NavLink>
               ) : (
                 <NavLink
@@ -92,9 +147,20 @@ const NavigationBar = () => {
                   className="nav-item-right"
                   onClick={handleLogout}
                 >
-                  <span className="nav-item" onClick={handleNavbarClick}>
-                    Logout
-                  </span>
+                  {({ isActive }) =>
+                  isActive ? (
+                    <span
+                      className="nav-item-selected"
+                      onClick={handleNavbarClick}
+                    >
+                      Logout
+                    </span>
+                  ) : (
+                    <span className="nav-item" onClick={handleNavbarClick}>
+                      Logout
+                    </span>
+                  )
+                }
                 </NavLink>
               )}
             </Nav>

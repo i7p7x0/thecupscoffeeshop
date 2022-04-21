@@ -18,6 +18,12 @@
   @include brightenOnHover;
 }
 
+.nav-item-selected {
+  color: #ffffff;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
 // media queries
 
 @media screen and (min-width: $min-width-laptop) {
