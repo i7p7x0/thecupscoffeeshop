@@ -7,8 +7,8 @@
 .about-container {
   display: grid;
   grid-template-areas:
-    "about-a"
     "about-b"
+    "about-a"
     "about-c"
     "about-d";
   justify-content: center;
@@ -19,21 +19,36 @@
   font-style: italic;
 }
 
+.child-body-segment {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-child-header {
+  text-align: center;
+}
+
 // media queries
 
 //tablet layout for about page
 @media screen and (min-width: $min-width-tablet) {
   .about-container {
     grid-template-areas:
-      "about-a about-b"
-      "about-c about-d";
+      "about-b"
+      "about-a"
+      "about-c"
+      "about-d";
+    align-items: center;
   }
 }
 
 //tablet layout for about page
 @media screen and (min-width: $min-width-laptop) {
   .about-container {
-    grid-template-areas: "about-a about-b about-c about-d";
+    grid-template-areas:
+      "about-b about-b about-b"
+      "about-a about-c about-d";
+    align-items: flex-start;
   }
 }
 

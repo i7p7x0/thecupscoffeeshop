@@ -38,7 +38,7 @@ body, html {
 .about-container {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "about-a" "about-b" "about-c" "about-d";
+      grid-template-areas: "about-b" "about-a" "about-c" "about-d";
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -51,26 +51,46 @@ body, html {
   font-style: italic;
 }
 
+.child-body-segment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.about-child-header {
+  text-align: center;
+}
+
 @media screen and (min-width: 481px) {
   .about-container {
-        grid-template-areas: "about-a about-b" "about-c about-d";
+        grid-template-areas: "about-b" "about-a" "about-c" "about-d";
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
 @media screen and (min-width: 821px) {
   .about-container {
-        grid-template-areas: "about-a about-b about-c about-d";
+        grid-template-areas: "about-b about-b about-b" "about-a about-c about-d";
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
 }
 
 .about-a {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: about-a;
 }
 
 .about-b {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: about-b;
 }
