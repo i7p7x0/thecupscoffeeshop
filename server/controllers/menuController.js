@@ -61,5 +61,67 @@ exports.postMenuItem = async (req, res, next) => {
   }
   return res.json(successes.success.added);
 };
-exports.patchMenuItem = (req, res, next) => {};
-exports.deleteMenuItem = (req, res, next) => {};
+// Update item price
+exports.patchMenuItem = async (req, res, next) => {
+  const { category, name, price } = req.body;
+  const updateItemObj = new Menu.item({ name: name, price: price });
+  let existingCategory = await Menu.menu.findOne({ category: category });
+
+  //   return if user tries to update a category that does not exist
+  if (existingCategory === null || existingCategory === undefined) {
+    return res.json(errors.error.inputError);
+  }
+  let itemToBeUpdated = existingCategory.items.find(
+    (item) => item.name === name
+  );
+  //   return if user tries to update an item that does not exist in any category
+  if (itemToBeUpdated === undefined) {
+    return res.json(errors.error.inputError);
+  }
+  let items = existingCategory.items.filter((item) => item.name !== name);
+
+  items.push(updateItemObj);
+  try {
+    await Menu.menu.replaceOne(
+      { category: category },
+      {
+        category: category,
+        items: items,
+      }
+    );
+  } catch (error) {
+    return res.json(errors.error.fatalError);
+  }
+  return res.json(successes.success.updated);
+};
+exports.deleteMenuItem = async (req, res, next) => {
+    const { category, name} = req.body;
+
+  let existingCategory = await Menu.menu.findOne({ category: category });
+
+  //   return if user tries to update a category that does not exist
+  if (existingCategory === null || existingCategory === undefined) {
+    return res.json(errors.error.inputError);
+  }
+  let itemToBeDeleted = existingCategory.items.find(
+    (item) => item.name === name
+  );
+  //   return if user tries to update an item that does not exist in any category
+  if (itemToBeDeleted === undefined) {
+    return res.json(errors.error.inputError);
+  }
+  let items = existingCategory.items.filter((item) => item.name !== name);
+
+  try {
+    await Menu.menu.replaceOne(
+      { category: category },
+      {
+        category: category,
+        items: items,
+      }
+    );
+  } catch (error) {
+    return res.json(errors.error.fatalError);
+  }
+  return res.json(successes.success.deleted);
+};

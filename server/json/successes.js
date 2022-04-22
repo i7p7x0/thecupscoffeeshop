@@ -1,8 +1,18 @@
 const success = {
   added: {
-    error: true,
+    error: false,
     successType: "post",
     successMessage: "Saved",
+  },
+  updated: {
+    error: false,
+    successType: "patch",
+    successMessage: "Updated",
+  },
+  deleted: {
+    error: false,
+    successType: "delete",
+    successMessage: "Deleted",
   },
 };
 
