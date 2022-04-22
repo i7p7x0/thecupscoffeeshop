@@ -47,8 +47,8 @@ const connectionString =
 mongoose
   .connect(connectionString)
   .then((result) =>
-    app.listen(process.env.PORT || 5000, () => {
-      console.log("server started on port 3000");
+    app.listen(5000, () => {
+      console.log("server started on port 5000");
     })
   )
   .catch((err) => console.log(err));

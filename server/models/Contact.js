@@ -36,4 +36,4 @@ const contactSchema = new Schema({
   timings: [timingSchema],
 });
 
-exports.Contact = mongoose.model("Contact", contactSchema);
+module.exports = mongoose.model("Contact", contactSchema);
