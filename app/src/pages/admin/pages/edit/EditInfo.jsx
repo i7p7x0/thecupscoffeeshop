@@ -7,9 +7,22 @@ import routes from "../../../../constants/routes";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import contactDetail from "../../../../data/contactDetail";
+import useGetAPICall from "../../../../hooks/useGetAPICall";
+import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
 import * as validations from "../../../../validation/validateInputs";
 
 const EditInfo = (props) => {
+  const [contact, setContact] = useState([
+    {
+      emailAddress: "",
+      contactNumber: "",
+      instagramHandle: "",
+      location: "",
+      timings: [{ day: "", openingTime: "", closingTime: "" }],
+    },
+  ]);
+  const [responseLoaded, setResponseLoaded] = useState([]);
+  useGetAPICall("contact", setContact, setResponseLoaded);
   //state that determines whether or not the input has been validated and whether or not the input is valid
   const [inputValidated, setInputValidated] = useState("-1");
 
@@ -27,7 +40,7 @@ const EditInfo = (props) => {
   // user input
 
   const [userInput, setUserInput] = useState({
-    emailAddress: contactDetail.emailAddress,
+    emailAddress: contact[0].emailAddress,
     contactNumber: contactDetail.contactNumber,
     location: contactDetail.location,
     instagramHandle: contactDetail.instagramHandle,
@@ -43,6 +56,27 @@ const EditInfo = (props) => {
       cycle: "",
     },
   });
+
+  // fill form data after fetch request completes
+  useEffect(() => {
+    setUserInput({
+      emailAddress: contact[0].emailAddress,
+      contactNumber: contact[0].contactNumber,
+      location: contact[0].location,
+      instagramHandle: contact[0].instagramHandle,
+      timings: "",
+      openingTime: {
+        hh: "",
+        mm: "",
+        cycle: "",
+      },
+      closingTime: {
+        hh: "",
+        mm: "",
+        cycle: "",
+      },
+    });
+  }, [contact]);
 
   // set user input to state
   const handleUserInput = (event) => {
@@ -322,175 +356,177 @@ const EditInfo = (props) => {
   };
 
   return (
-    <div className="edit-info">
-      <EditForm header={"Edit Your Information"}>
-        <Form>
-          <InputGroup size="sm" className="mb-3 ">
-            <InputGroup.Text
-              id="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-            >
-              Email Address
-            </InputGroup.Text>
-            <FormControl
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-              id="edit-email-address"
-              onChange={handleUserInput}
-              value={userInput.emailAddress}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text
-              id="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-            >
-              Contact Number
-            </InputGroup.Text>
-            <FormControl
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-              id="edit-contact-number"
-              onChange={handleUserInput}
-              value={userInput.contactNumber}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text
-              id="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-            >
-              Location
-            </InputGroup.Text>
-            <FormControl
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-              id="edit-location"
-              onChange={handleUserInput}
-              value={userInput.location}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text
-              id="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-            >
-              Instagram handle
-            </InputGroup.Text>
-            <FormControl
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-              className="edit-info-input-group"
-              id="edit-instagram-handle"
-              onChange={handleUserInput}
-              value={userInput.instagramHandle}
-            />
-          </InputGroup>
+    <>
+      {responseLoaded ? (
+        <div className="edit-info">
+          <EditForm header={"Edit Your Information"}>
+            <Form>
+              <InputGroup size="sm" className="mb-3 ">
+                <InputGroup.Text
+                  id="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                >
+                  Email Address
+                </InputGroup.Text>
+                <FormControl
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                  id="edit-email-address"
+                  onChange={handleUserInput}
+                  value={userInput.emailAddress}
+                />
+              </InputGroup>
+              <InputGroup size="sm" className="mb-3">
+                <InputGroup.Text
+                  id="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                >
+                  Contact Number
+                </InputGroup.Text>
+                <FormControl
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                  id="edit-contact-number"
+                  onChange={handleUserInput}
+                  value={userInput.contactNumber}
+                />
+              </InputGroup>
+              <InputGroup size="sm" className="mb-3">
+                <InputGroup.Text
+                  id="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                >
+                  Location
+                </InputGroup.Text>
+                <FormControl
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                  id="edit-location"
+                  onChange={handleUserInput}
+                  value={userInput.location}
+                />
+              </InputGroup>
+              <InputGroup size="sm" className="mb-3">
+                <InputGroup.Text
+                  id="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                >
+                  Instagram handle
+                </InputGroup.Text>
+                <FormControl
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                  className="edit-info-input-group"
+                  id="edit-instagram-handle"
+                  onChange={handleUserInput}
+                  value={userInput.instagramHandle}
+                />
+              </InputGroup>
 
-          <Form.Select
-            aria-label="select-timings"
-            defaultValue={"default"}
-            className="edit-info-select-form mb-3"
-            id="edit-timing-select"
-            onChange={handleUserInput}
-          >
-            <option disabled={true} value="default">
-              --Timings--
-            </option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-          </Form.Select>
-          {userInput.timings.length > 0 ? (
-            <>
-              <InputGroup className="mb-3 edit-info-input-group">
-                <InputGroup.Text className="edit-info-input-group">
-                  Opening Time
-                </InputGroup.Text>
-                <FormControl
-                  aria-label="opening time hh"
-                  placeholder="Hour"
-                  id="opening-time-hh"
-                  value={userInput.openingTime.hh}
-                  onChange={handleUserInput}
-                />
-                <FormControl
-                  aria-label="closing time mm"
-                  placeholder="Minute"
-                  id="opening-time-mm"
-                  value={userInput.openingTime.mm}
-                  onChange={handleUserInput}
-                />
-                <Form.Select
-                  aria-label="select-timings"
-                  defaultValue={"default"}
-                  className="edit-info-select-form"
-                  id="opening-time-select"
-                  onChange={handleUserInput}
-                >
-                  <option value="default" disabled>
-                    --AM or PM--
-                  </option>
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-                </Form.Select>
-              </InputGroup>
-              <InputGroup className="mb-3 edit-info-input-group">
-                <InputGroup.Text className="edit-info-input-group">
-                  Closing Time
-                </InputGroup.Text>
-                <FormControl
-                  aria-label="opening time hh"
-                  placeholder="Hour"
-                  id="closing-time-hh"
-                  value={userInput.closingTime.hh}
-                  onChange={handleUserInput}
-                />
-                <FormControl
-                  aria-label="closing time mm"
-                  placeholder="Minute"
-                  id="closing-time-mm"
-                  value={userInput.closingTime.mm}
-                  onChange={handleUserInput}
-                />
-                <Form.Select
-                  aria-label="select-timings"
-                  defaultValue={"default"}
-                  className="edit-info-select-form"
-                  id="closing-time-select"
-                  onChange={handleUserInput}
-                >
-                  <option value="default" disabled>
-                    --AM or PM--
-                  </option>
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-                </Form.Select>
-              </InputGroup>
-            </>
-          ) : null}
-          {inputValidated === "0" ? (
-            <div className="edit-info-error">invalid input*</div>
-          ) : null}
-          <Button variant="success mx-3" onClick={handleButtonClick}>
-            Submit
-          </Button>
-          <Button variant="danger" onClick={handleClearInput}>
-            Clear
-          </Button>
-          <Link to={routes.adminDashboard}>
-            <Button variant="secondary mx-3">Go Back</Button>
-          </Link>
-        </Form>
-      </EditForm>
-    </div>
+              <Form.Select
+                aria-label="select-timings"
+                defaultValue={"default"}
+                className="edit-info-select-form mb-3"
+                id="edit-timing-select"
+                onChange={handleUserInput}
+              >
+                <option disabled={true} value="default">
+                  --Timings--
+                </option>
+                {contact[0].timings.map((timing) => {
+                  return <option key={timing.day}>{timing.day}</option>;
+                })}
+              </Form.Select>
+              {userInput.timings.length > 0 ? (
+                <>
+                  <InputGroup className="mb-3 edit-info-input-group">
+                    <InputGroup.Text className="edit-info-input-group">
+                      Opening Time
+                    </InputGroup.Text>
+                    <FormControl
+                      aria-label="opening time hh"
+                      placeholder="Hour"
+                      id="opening-time-hh"
+                      value={userInput.openingTime.hh}
+                      onChange={handleUserInput}
+                    />
+                    <FormControl
+                      aria-label="closing time mm"
+                      placeholder="Minute"
+                      id="opening-time-mm"
+                      value={userInput.openingTime.mm}
+                      onChange={handleUserInput}
+                    />
+                    <Form.Select
+                      aria-label="select-timings"
+                      defaultValue={"default"}
+                      className="edit-info-select-form"
+                      id="opening-time-select"
+                      onChange={handleUserInput}
+                    >
+                      <option value="default" disabled>
+                        --AM or PM--
+                      </option>
+                      <option value="AM">AM</option>
+                      <option value="PM">PM</option>
+                    </Form.Select>
+                  </InputGroup>
+                  <InputGroup className="mb-3 edit-info-input-group">
+                    <InputGroup.Text className="edit-info-input-group">
+                      Closing Time
+                    </InputGroup.Text>
+                    <FormControl
+                      aria-label="opening time hh"
+                      placeholder="Hour"
+                      id="closing-time-hh"
+                      value={userInput.closingTime.hh}
+                      onChange={handleUserInput}
+                    />
+                    <FormControl
+                      aria-label="closing time mm"
+                      placeholder="Minute"
+                      id="closing-time-mm"
+                      value={userInput.closingTime.mm}
+                      onChange={handleUserInput}
+                    />
+                    <Form.Select
+                      aria-label="select-timings"
+                      defaultValue={"default"}
+                      className="edit-info-select-form"
+                      id="closing-time-select"
+                      onChange={handleUserInput}
+                    >
+                      <option value="default" disabled>
+                        --AM or PM--
+                      </option>
+                      <option value="AM">AM</option>
+                      <option value="PM">PM</option>
+                    </Form.Select>
+                  </InputGroup>
+                </>
+              ) : null}
+              {inputValidated === "0" ? (
+                <div className="edit-info-error">invalid input*</div>
+              ) : null}
+              <Button variant="success mx-3" onClick={handleButtonClick}>
+                Submit
+              </Button>
+              <Button variant="danger" onClick={handleClearInput}>
+                Clear
+              </Button>
+              <Link to={routes.adminDashboard}>
+                <Button variant="secondary mx-3">Go Back</Button>
+              </Link>
+            </Form>
+          </EditForm>
+        </div>
+      ) : (
+        <LoadingSpinner />
+      )}
+    </>
   );
 };
 

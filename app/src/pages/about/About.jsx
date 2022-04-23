@@ -148,10 +148,9 @@ const About = (props) => {
                             return (
                               <li
                                 key={timing._id}
-                                className="contact-details-list-item"
+                                className="contact-details-list-item contact-details-list-item-timing"
                               >
-                                {timing.day} : 
-                                {timing.openingTime} <BsDash />
+                                {timing.day} :{timing.openingTime} <BsDash />
                                 {timing.closingTime}
                               </li>
                             );

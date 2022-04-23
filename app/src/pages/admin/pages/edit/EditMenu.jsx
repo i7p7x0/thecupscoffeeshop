@@ -8,9 +8,12 @@ import menu from "../../../../data/menu";
 import * as validations from "../../../../validation/validateInputs";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useGetAPICall from "../../../../hooks/useGetAPICall";
 import "./edit-menu.css";
 
 const EditMenu = (props) => {
+  // const [menuItems, setMenuItems] = useState([]);
+  // const [responseData, setResponseData] = useState(false);
   // check if user is authenticated
   const authentication = useSelector((state) => state.authentication);
 

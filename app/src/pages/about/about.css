@@ -69,6 +69,10 @@ body, html {
   list-style: none;
 }
 
+.contact-details-list-item-timing {
+  margin-left: 5%;
+}
+
 @media screen and (min-width: 481px) {
   .about-container {
         grid-template-areas: "about-b" "about-a" "about-c" "about-d";
