@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
+import useGetAPICall from "../../hooks/useGetAPICall";
 import Card from "../../components/card/Card";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import ProgressBar from "../../components/progressBar/ProgressBar";
 import "./menu.css";
 
 import { GiCoffeeCup, GiHealthPotion, GiSlicedBread } from "react-icons/gi";
@@ -10,22 +10,7 @@ const Menu = (props) => {
   const [menu, setMenu] = useState([]);
   const [responseLoaded, setResponseLoaded] = useState(false);
 
-  useEffect(() => {
-    let mounted = true;
-    const sendRequest = async () => {
-      const response = await fetch(
-        process.env.REACT_APP_BACKEND_URL + "/menu/"
-      );
-      const responseData = await response.json();
-      console.log(responseData);
-      if (mounted) {
-        setMenu(responseData);
-        setResponseLoaded(true);
-      }
-    };
-    sendRequest();
-    return () => (mounted = false);
-  }, []);
+  useGetAPICall("menu", setMenu, setResponseLoaded);
 
   const maxMenuItemLength = 40;
 

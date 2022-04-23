@@ -10,10 +10,28 @@ const About = (props) => {
   return (
     <div className="about">
       <div className="about-container">
+        <div className="about-container-child about-b">
+          <Card>
+            <div>
+              <h1 className="about-child-header">About us</h1>
+              <hr />
+              <p className="about-child-paragraph">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Necessitatibus quibusdam odit quasi voluptates dolor facere
+                consectetur. Incidunt eos deserunt ratione, asperiores ex neque
+                ipsum ab, eveniet, dolorem iste quasi rem? Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Veniam perspiciatis neque
+                deserunt minus porro molestias impedit, ut inventore officiis
+                odit cumque tempore modi optio nobis corrupti quod fugit est
+                nostrum!
+              </p>
+            </div>
+          </Card>
+        </div>
         <div className="about-container-child about-a">
           <Card>
             <div className="about-inner-child">
-              <h1 className="about-child-header">Lorem, ipsum </h1>
+              <h1 className="about-child-header">Our Shop</h1>
               <hr />
               <div className="child-body-segment">
                 <div className="child-image">
@@ -36,29 +54,10 @@ const About = (props) => {
           </Card>
         </div>
 
-        <div className="about-container-child about-b">
-          <Card>
-            <div>
-              <h1 className="about-child-header">Lorem, ipsum </h1>
-              <hr />
-              <p className="about-child-paragraph">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Necessitatibus quibusdam odit quasi voluptates dolor facere
-                consectetur. Incidunt eos deserunt ratione, asperiores ex neque
-                ipsum ab, eveniet, dolorem iste quasi rem? Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Veniam perspiciatis neque
-                deserunt minus porro molestias impedit, ut inventore officiis
-                odit cumque tempore modi optio nobis corrupti quod fugit est
-                nostrum!
-              </p>
-            </div>
-          </Card>
-        </div>
-
         <div className="about-container-child about-c">
           <Card>
             <div>
-              <h1 className="about-child-header">Lorem, ipsum </h1>
+              <h1 className="about-child-header">Our Menu </h1>
               <hr />
               <div className="child-body-segment">
                 <div className="child-image">
@@ -80,7 +79,7 @@ const About = (props) => {
         <div className="about-container-child about-d">
           <Card>
             <div>
-              <h1 className="about-child-header">Lorem, ipsum </h1>
+              <h1 className="about-child-header">Our Detail </h1>
               <hr />
               <div className="child-body-segment">
                 <div className="child-image">
