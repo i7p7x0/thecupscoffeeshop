@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import routes from "../../../../constants/routes";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import contactDetail from "../../../../data/contactDetail";
 import useGetAPICall from "../../../../hooks/useGetAPICall";
 import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
 import * as validations from "../../../../validation/validateInputs";
@@ -41,9 +40,9 @@ const EditInfo = (props) => {
 
   const [userInput, setUserInput] = useState({
     emailAddress: contact[0].emailAddress,
-    contactNumber: contactDetail.contactNumber,
-    location: contactDetail.location,
-    instagramHandle: contactDetail.instagramHandle,
+    contactNumber: contact[0].contactNumber,
+    location: contact[0].location,
+    instagramHandle: contact[0].instagramHandle,
     timings: "",
     openingTime: {
       hh: "",
