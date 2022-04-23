@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import routes from "../../../../constants/routes";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
-import menu from "../../../../data/menu";
 import * as validations from "../../../../validation/validateInputs";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
