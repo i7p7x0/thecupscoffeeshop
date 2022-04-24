@@ -49,6 +49,7 @@ exports.postContact = async (req, res, next) => {
 exports.patchContact = async (req, res, next) => {
   let contact,
     timings = [];
+
   const { emailAddress, contactNumber, location, instagramHandle, timing } =
     req.body;
 
@@ -65,11 +66,20 @@ exports.patchContact = async (req, res, next) => {
     closingTime: timing.closingTime,
   });
 
-  console.log(newTiming.day);
-  if (timings.find((t) => t.day === newTiming.day) !== undefined) {
-    timings = timings.filter((t) => t.day !== newTiming.day);
+  if (
+    newTiming.day === "Monday" ||
+    newTiming.day === "Tuesday" ||
+    newTiming.day === "Wednesday" ||
+    newTiming.day === "Thursday" ||
+    newTiming.day === "Friday" ||
+    newTiming.day === "Saturday" ||
+    newTiming.day === "Sunday"
+  ) {
+    if (timings.find((t) => t.day === newTiming.day) !== undefined) {
+      timings = timings.filter((t) => t.day !== newTiming.day);
+    }
+    timings.push(newTiming);
   }
-  timings.push(newTiming);
 
   let newContactInformation = new Contact.contact({
     emailAddress: emailAddress,

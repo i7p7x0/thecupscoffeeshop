@@ -7,6 +7,7 @@ import routes from "../../../../constants/routes";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import useGetAPICall from "../../../../hooks/useGetAPICall";
+import patchAPICall from "../../../../api/patchAPICall";
 import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
 import * as validations from "../../../../validation/validateInputs";
 
@@ -320,11 +321,23 @@ const EditInfo = (props) => {
   };
 
   // handle information submit:
-  const handleButtonClick = (event) => {
+  const handleButtonClick = async (event) => {
     event.preventDefault();
     let validated = validations.validateContactDetail(userInput);
     if (validated) {
-      alert("Hello World");
+      patchAPICall("contact", {
+        emailAddress: userInput.emailAddress,
+        contactNumber: userInput.contactNumber,
+        location: userInput.location,
+        instagramHandle: userInput.instagramHandle,
+        timing: {
+          day: userInput.timings,
+          openingTime:
+            userInput.openingTime.hh + ":" + userInput.openingTime.mm + " ",
+          closingTime:
+            userInput.closingTime.hh + ":" + userInput.closingTime.mm + " ",
+        },
+      });
       setInputValidated("1");
     } else if (!validated) {
       setInputValidated("0");
