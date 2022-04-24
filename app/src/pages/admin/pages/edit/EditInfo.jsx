@@ -5,13 +5,28 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import routes from "../../../../constants/routes";
 import { Link } from "react-router-dom";
+import Popup from "../../../../components/popup/Popup";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import useGetAPICall from "../../../../hooks/useGetAPICall";
+
 import patchAPICall from "../../../../api/patchAPICall";
+
 import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
 import * as validations from "../../../../validation/validateInputs";
 
 const EditInfo = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleModalState = () => {
+    setShow(false);
+  };
+
+  const [modalContent, setModalContent] = useState({
+    route: "",
+    title: "",
+    body: "",
+  });
+
   const [contact, setContact] = useState([
     {
       emailAddress: "",
@@ -323,9 +338,10 @@ const EditInfo = (props) => {
   // handle information submit:
   const handleButtonClick = async (event) => {
     event.preventDefault();
+
     let validated = validations.validateContactDetail(userInput);
     if (validated) {
-      patchAPICall("contact", {
+      const responseData = await patchAPICall("contact", {
         emailAddress: userInput.emailAddress,
         contactNumber: userInput.contactNumber,
         location: userInput.location,
@@ -338,6 +354,21 @@ const EditInfo = (props) => {
             userInput.closingTime.hh + ":" + userInput.closingTime.mm + " ",
         },
       });
+
+      if (responseData.error) {
+        setModalContent({
+          route: routes.adminEditInfo,
+          title: responseData.errorType,
+          body: responseData.errorMessage,
+        });
+      } else if (!responseData.error) {
+        setModalContent({
+          route: routes.adminDashboard,
+          title: "Success!",
+          body: "Your data has been updated.",
+        });
+      }
+      setShow(true);
       setInputValidated("1");
     } else if (!validated) {
       setInputValidated("0");
@@ -371,6 +402,15 @@ const EditInfo = (props) => {
     <>
       {responseLoaded ? (
         <div className="edit-info">
+          {show ? (
+            <Popup
+              show={show}
+              title={modalContent.title}
+              body={modalContent.body}
+              handleModalState={handleModalState}
+              route={modalContent.route}
+            />
+          ) : null}
           <EditForm header={"Edit Your Information"}>
             <Form>
               <InputGroup size="sm" className="mb-3 ">

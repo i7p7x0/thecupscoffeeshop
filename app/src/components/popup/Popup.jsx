@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import routes from "../../constants/routes";
 import "./popup.css";
 const Popup = (props) => {
   const authentication = useSelector((state) => state.authentication);
@@ -27,7 +26,7 @@ const Popup = (props) => {
         </Modal.Header>
         <Modal.Body>
           <span className="modal-span">
-            {authentication.isLoggedIn ? "Welcome to Admin view." : props.body}
+            {props.body}
           </span>
         </Modal.Body>
         <Modal.Footer>

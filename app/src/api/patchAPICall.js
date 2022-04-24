@@ -13,9 +13,5 @@ export default async function patchAPICall(route, bodyObject) {
     }
   );
   const responseData = await response.json();
-  //   if (ResponseData.error) {
-  //     alert(ResponseData.errorMessage);
-  //   } else if (ResponseData.error) {
-  //     alert("Updated successfully");
-  //   }
+  return responseData;
 }
