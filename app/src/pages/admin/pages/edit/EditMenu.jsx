@@ -7,11 +7,29 @@ import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import * as validations from "../../../../validation/validateInputs";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Popup from "../../../../components/popup/Popup";
 import useGetAPICall from "../../../../hooks/useGetAPICall";
 import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
+import patchAPICall from "../../../../api/patchAPICall";
+import deleteAPICall from "../../../../api/deleteAPICall";
+import postAPICall from "../../../../api/postAPICall";
 import "./edit-menu.css";
 
 const EditMenu = (props) => {
+  // modal state variable
+  const [show, setShow] = useState(false);
+
+  // determine whether the modal should be open or closed
+  const handleModalState = () => {
+    setShow(false);
+  };
+
+  // set modal content
+  const [modalContent, setModalContent] = useState({
+    route: "",
+    title: "",
+    body: "",
+  });
   const [menuItems, setMenuItems] = useState([]);
   const [responseData, setResponseData] = useState(false);
   useGetAPICall("menu", setMenuItems, setResponseData);
@@ -59,6 +77,7 @@ const EditMenu = (props) => {
         let selectedItem = selectedCategory[0].items.filter(
           (item) => item._id == ids[1]
         );
+
         setUpdateItem({
           parentId: ids[0],
           itemId: ids[1],
@@ -92,6 +111,7 @@ const EditMenu = (props) => {
           };
         });
         break;
+
       default:
         break;
     }
@@ -167,13 +187,32 @@ const EditMenu = (props) => {
   };
 
   // handle submit button press
-  const handleSubmitMenu = (event) => {
+  const handleSubmitMenu = async (event) => {
     event.preventDefault();
     if (
       newItem.itemCategory !== "default" &&
       updateItem.itemCategory === "default"
     ) {
       if (validations.validateItem(newItem)) {
+        const responseData = await postAPICall("menu", {
+          category: newItem.itemCategory,
+          name: newItem.itemName,
+          price: newItem.itemPrice,
+        });
+        if (responseData.error) {
+          setModalContent({
+            route: routes.adminEditInfo,
+            title: responseData.errorType,
+            body: responseData.errorMessage,
+          });
+        } else if (!responseData.error) {
+          setModalContent({
+            route: routes.adminDashboard,
+            title: "Success!",
+            body: "Your data has been added.",
+          });
+        }
+        setShow(true);
         setInputValidated("1");
       } else if (!validations.validateItem(newItem)) {
         setInputValidated("0");
@@ -181,9 +220,58 @@ const EditMenu = (props) => {
     }
     if (
       newItem.itemCategory === "default" &&
-      updateItem.itemCategory !== "default"
+      updateItem.itemCategory !== "default" &&
+      !updateItem.deleteFlag
     ) {
       if (validations.validateItem(updateItem)) {
+        const responseData = await patchAPICall("menu", {
+          category: updateItem.itemCategory,
+          name: updateItem.itemName,
+          price: updateItem.itemPrice,
+        });
+        if (responseData.error) {
+          setModalContent({
+            route: routes.adminEditInfo,
+            title: responseData.errorType,
+            body: responseData.errorMessage,
+          });
+        } else if (!responseData.error) {
+          setModalContent({
+            route: routes.adminDashboard,
+            title: "Success!",
+            body: "Your data has been updated.",
+          });
+        }
+        setShow(true);
+        setInputValidated("1");
+      } else if (!validations.validateItem(updateItem)) {
+        setInputValidated("0");
+      }
+    }
+    if (
+      newItem.itemCategory === "default" &&
+      updateItem.itemCategory !== "default" &&
+      updateItem.deleteFlag
+    ) {
+      if (validations.validateItem(updateItem)) {
+        const responseData = await deleteAPICall("menu", {
+          category: updateItem.itemCategory,
+          name: updateItem.itemName,
+        });
+        if (responseData.error) {
+          setModalContent({
+            route: routes.adminEditInfo,
+            title: responseData.errorType,
+            body: responseData.errorMessage,
+          });
+        } else if (!responseData.error) {
+          setModalContent({
+            route: routes.adminDashboard,
+            title: "Success!",
+            body: "Your data has been deleted.",
+          });
+        }
+        setShow(true);
         setInputValidated("1");
       } else if (!validations.validateItem(updateItem)) {
         setInputValidated("0");
@@ -195,6 +283,15 @@ const EditMenu = (props) => {
     <>
       {responseData ? (
         <div className="edit-menu">
+          {show ? (
+            <Popup
+              show={show}
+              title={modalContent.title}
+              body={modalContent.body}
+              handleModalState={handleModalState}
+              route={modalContent.route}
+            />
+          ) : null}
           <EditForm header={"Edit your shop menu"}>
             <Form>
               {(updateItem.itemCategory === "default" &&
@@ -207,7 +304,7 @@ const EditMenu = (props) => {
                     className="edit-info-select-form mb-3"
                     id="edit-menu-update-select"
                     onChange={handleUpdateChanges}
-                    value={updateItem.itemCategory}
+                    value={updateItem.itemName}
                   >
                     <option value="default" disabled>
                       --Select a menu item to edit--
@@ -232,11 +329,15 @@ const EditMenu = (props) => {
                     >
                       Item
                     </InputGroup.Text>
+
                     <FormControl
                       aria-label="opening time hh"
                       placeholder="Item"
                       id="edit-menu-update-item"
                       value={updateItem.itemName}
+                      className={
+                        updateItem.deleteFlag ? "edit-item-to-be-deleted" : ""
+                      }
                       disabled
                     />
                     <FormControl
@@ -244,6 +345,9 @@ const EditMenu = (props) => {
                       placeholder="Price"
                       id="edit-menu-update-price"
                       onChange={handleUpdateChanges}
+                      className={
+                        updateItem.deleteFlag ? "edit-item-to-be-deleted" : ""
+                      }
                       value={updateItem.itemPrice}
                     />
                     {/* Delete existing item */}
@@ -251,8 +355,11 @@ const EditMenu = (props) => {
                       variant="danger"
                       id="edit-menu-delete-item"
                       onClick={handleUpdateChanges}
+                      disabled={
+                        updateItem.category === "default" ? true : false
+                      }
                     >
-                      <MdDelete id="edit-menu-delete-item-icon" />
+                      delete
                     </Button>
                   </InputGroup>
                 </>

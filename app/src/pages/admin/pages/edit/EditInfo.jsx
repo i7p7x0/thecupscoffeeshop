@@ -8,25 +8,27 @@ import { Link } from "react-router-dom";
 import Popup from "../../../../components/popup/Popup";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import useGetAPICall from "../../../../hooks/useGetAPICall";
-
 import patchAPICall from "../../../../api/patchAPICall";
-
 import LoadingSpinner from "../../../../components/loadingSpinner/LoadingSpinner";
 import * as validations from "../../../../validation/validateInputs";
 
 const EditInfo = (props) => {
+  // modal state variable
   const [show, setShow] = useState(false);
 
+  // determine whether the modal should be open or closed
   const handleModalState = () => {
     setShow(false);
   };
 
+  // set modal content
   const [modalContent, setModalContent] = useState({
     route: "",
     title: "",
     body: "",
   });
 
+  // set dedfault contact
   const [contact, setContact] = useState([
     {
       emailAddress: "",

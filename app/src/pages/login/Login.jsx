@@ -88,8 +88,8 @@ const Login = () => {
           handleModalState={handleModalState}
           show={show}
           loggedInPopup={true}
-          title={"Invalid credentials!"}
-          body={"No user with such credentials exists"}
+          title={"Success!"}
+          body={"Logged in successfully"}
           route={routes.adminDashboard}
         />
       </Form>

@@ -18,15 +18,13 @@ const Popup = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>
             <span className="modal-span">
-              {authentication.isLoggedIn
-                ? "Logged In Successfully!"
-                : props.title}
+              {authentication.isLoggedIn ? props.title : "Error"}
             </span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <span className="modal-span">
-            {props.body}
+            {authentication.isLoggedIn ? props.body : "Authentication faileed"}
           </span>
         </Modal.Body>
         <Modal.Footer>

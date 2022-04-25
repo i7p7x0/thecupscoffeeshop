@@ -18,3 +18,8 @@
   @include marginAllSides10px;
   font-weight: bold;
 }
+
+.edit-item-to-be-deleted {
+  color: red;
+  text-decoration: line-through;
+}
