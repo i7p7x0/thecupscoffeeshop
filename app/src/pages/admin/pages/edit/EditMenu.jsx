@@ -49,7 +49,7 @@ const EditMenu = (props) => {
     parentId: "",
     itemId: "",
     itemCategory: "default",
-    itemName: "",
+    itemName: "default",
     itemPrice: "",
     deleteFlag: false,
   });
@@ -72,15 +72,23 @@ const EditMenu = (props) => {
     clearNewItem();
     switch (changeType) {
       case "edit-menu-update-select":
-        let ids = input.split("childId");
-        let selectedCategory = menuItems.filter((menu) => menu._id == ids[0]);
+        let parentId, childId;
+        for (let i = 0; i < menuItems.length; i++) {
+          for (let j = 0; j < menuItems[i].items.length; j++) {
+            if (menuItems[i].items[j].name == input) {
+              parentId = menuItems[i]._id;
+              childId = menuItems[i].items[j]._id;
+              break;
+            }
+          }
+        }
+        let selectedCategory = menuItems.filter((menu) => menu._id == parentId);
         let selectedItem = selectedCategory[0].items.filter(
-          (item) => item._id == ids[1]
+          (item) => item._id == childId
         );
-
         setUpdateItem({
-          parentId: ids[0],
-          itemId: ids[1],
+          parentId: parentId,
+          itemId: childId,
           itemCategory: selectedCategory[0].category,
           itemName: selectedItem[0].name,
           itemPrice: selectedItem[0].price,
@@ -312,10 +320,7 @@ const EditMenu = (props) => {
                     {menuItems.map((m) => {
                       return m.items.map((item) => {
                         return (
-                          <option
-                            key={item._id}
-                            value={m._id + "childId" + item._id}
-                          >
+                          <option key={item._id} value={item.name}>
                             {item.name}
                           </option>
                         );
@@ -334,7 +339,11 @@ const EditMenu = (props) => {
                       aria-label="opening time hh"
                       placeholder="Item"
                       id="edit-menu-update-item"
-                      value={updateItem.itemName}
+                      value={
+                        updateItem.itemName === "default"
+                          ? ""
+                          : updateItem.itemName
+                      }
                       className={
                         updateItem.deleteFlag ? "edit-item-to-be-deleted" : ""
                       }
@@ -356,7 +365,7 @@ const EditMenu = (props) => {
                       id="edit-menu-delete-item"
                       onClick={handleUpdateChanges}
                       disabled={
-                        updateItem.category === "default" ? true : false
+                        updateItem.itemName === "default" ? true : false
                       }
                     >
                       delete
