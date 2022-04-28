@@ -1,6 +1,7 @@
 const Contact = require("../models/Contact");
 const errors = require("../json/errors");
 const successes = require("../json/successes");
+const validations = require("../validation/validateInputs");
 
 exports.getContact = async (req, res, next) => {
   let contact;
@@ -12,39 +13,39 @@ exports.getContact = async (req, res, next) => {
   }
   return res.json(contact);
 };
-exports.postContact = async (req, res, next) => {
-  let contact;
-  const { emailAddress, contactNumber, location, instagramHandle, timing } =
-    req.body;
+// exports.postContact = async (req, res, next) => {
+//   let contact;
+//   const { emailAddress, contactNumber, location, instagramHandle, timing } =
+//     req.body;
 
-  try {
-    contact = await Contact.contact.find();
-  } catch (err) {
-    return res.json(errors.error.fatalError);
-  }
+//   try {
+//     contact = await Contact.contact.find();
+//   } catch (err) {
+//     return res.json(errors.error.fatalError);
+//   }
 
-  let newTiming = new Contact.timing({
-    day: timing.day,
-    openingTime: timing.openingTime,
-    closingTime: timing.closingTime,
-  });
-  if (contact === undefined || contact === null || contact.length === 0) {
-    newContactInformation = new Contact.contact({
-      emailAddress: emailAddress,
-      contactNumber: contactNumber,
-      location: location,
-      instagramHandle: instagramHandle,
-      timings: [newTiming],
-    });
-    try {
-      await newContactInformation.save();
-    } catch (err) {
-      return res.json(errors.error.fatalError);
-    }
-    return res.json(successes.success.added);
-  }
-  return res.json(errors.error.itemAlreadyExistsError);
-};
+//   let newTiming = new Contact.timing({
+//     day: timing.day,
+//     openingTime: timing.openingTime,
+//     closingTime: timing.closingTime,
+//   });
+//   if (contact === undefined || contact === null || contact.length === 0) {
+//     newContactInformation = new Contact.contact({
+//       emailAddress: emailAddress,
+//       contactNumber: contactNumber,
+//       location: location,
+//       instagramHandle: instagramHandle,
+//       timings: [newTiming],
+//     });
+//     try {
+//       await newContactInformation.save();
+//     } catch (err) {
+//       return res.json(errors.error.fatalError);
+//     }
+//     return res.json(successes.success.added);
+//   }
+//   return res.json(errors.error.itemAlreadyExistsError);
+// };
 
 exports.patchContact = async (req, res, next) => {
   let contact,
@@ -52,6 +53,22 @@ exports.patchContact = async (req, res, next) => {
 
   const { emailAddress, contactNumber, location, instagramHandle, timing } =
     req.body;
+
+  try {
+    if (
+      !validations.validateContactDetail({
+        emailAddress,
+        contactNumber,
+        location,
+        instagramHandle,
+        timing,
+      })
+    ) {
+      throw new Error("error");
+    }
+  } catch {
+    return res.json(errors.error.inputError);
+  }
 
   try {
     contact = await Contact.contact.find();
@@ -106,4 +123,4 @@ exports.patchContact = async (req, res, next) => {
 
   return res.json(successes.success.updated);
 };
-exports.deleteContact = (req, res, next) => {};
+// exports.deleteContact = (req, res, next) => {};

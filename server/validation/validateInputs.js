@@ -149,8 +149,8 @@ const validateItem = (item) => {
     return false;
   }
   if (
-    !validateLength(item.itemCategory.replace(/\s/g, ""), 3, 20) ||
-    !validateLength(item.itemName.replace(/\s/g, ""), 3, 20) ||
+    !validateLength(item.itemCategory.replace(/\s/g, ""), 5, 20) ||
+    !validateLength(item.itemName.replace(/\s/g, ""), 5, 20) ||
     !validateLength(item.itemPrice.replace(/\s/g, ""), 1, 5)
   ) {
     //   check if any of the input field exceeds or preceeds allowed length
@@ -160,5 +160,39 @@ const validateItem = (item) => {
   return validated;
 };
 
+const validateMenu = (category, name, price) => {
+  let validated = true;
+  if (
+    !validateEmptyFields(category) ||
+    !validateEmptyFields(name) ||
+    !validateEmptyFields(price)
+  ) {
+    validated = false;
+    return false;
+  }
+  if (
+    category.toLowerCase() !== "hot beverages" &&
+    category.toLowerCase() !== "iced beverages" &&
+    category.toLowerCase() !== "refresher" &&
+    category.toLowerCase() !== "food"
+  ) {
+    console.log("reached");
+    validated = false;
+    return false;
+  }
+  if (
+    !validateLength(category.replace(/\s/g, ""), 3, 20) ||
+    !validateLength(name.replace(/\s/g, ""), 3, 20) ||
+    !validateLength(price.replace(/\s/g, ""), 1, 5)
+  ) {
+    console.log(category.toLowerCase());
+    //   check if any of the input field exceeds or preceeds allowed length
+    validated = false;
+    return false;
+  }
+  return validated;
+};
+
+exports.validateMenu = validateMenu;
 exports.validateItem = validateItem;
 exports.validateContactDetail = validateContactDetail;

@@ -5,6 +5,11 @@ MIXINS for Colors
 ----------------------------------------*/
 
 // set background color of an element to darkest background color
+
+@mixin coonfigBlackBackgroundColor {
+  background-color: $color-background-black;
+}
+
 @mixin configDarkestBackgroundColor {
   background-color: $color-background-darkest;
 }
@@ -51,8 +56,8 @@ MIXINS for Colors
   color: $color-font-darkest;
 }
 
-@mixin configRedFontColor{
-  color:$color-font-red;
+@mixin configRedFontColor {
+  color: $color-font-red;
 }
 
 /*----------------------------------------

@@ -5,7 +5,6 @@ import routes from "../../../../constants/routes";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import * as validations from "../../../../validation/validateInputs";
-import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Popup from "../../../../components/popup/Popup";
 import useGetAPICall from "../../../../hooks/useGetAPICall";

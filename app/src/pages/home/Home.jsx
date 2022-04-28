@@ -10,8 +10,8 @@ const Home = () => {
         <div className="home-child home-image">
           <ImageContainer imgSrc={imageCoffeeShop} imgAlt="image-coffee-shop" />
         </div>
-        <div className="home-childhome-content">
-          <Slider/>
+        <div className="home-content">
+          <Slider />
         </div>
       </div>
     </div>

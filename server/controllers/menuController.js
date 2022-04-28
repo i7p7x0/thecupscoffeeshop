@@ -1,6 +1,7 @@
 const Menu = require("../models/Menu");
 const errors = require("../json/errors");
 const successes = require("../json/successes");
+const validations = require("../validation/validateInputs");
 
 // get json of menu with items
 exports.getMenu = async (req, res, next) => {
@@ -19,6 +20,13 @@ exports.postMenuItem = async (req, res, next) => {
   const { category, name, price } = req.body;
   const newItemObj = new Menu.item({ name: name, price: price });
 
+  try {
+    if (!validations.validateMenu(category, name, price)) {
+      throw new Error("error");
+    }
+  } catch {
+    return res.json(errors.error.inputError);
+  }
   let existingCategory = await Menu.menu.findOne({ category: category });
 
   //   add an item for which the category does not exist
@@ -64,6 +72,13 @@ exports.postMenuItem = async (req, res, next) => {
 // Update item price
 exports.patchMenuItem = async (req, res, next) => {
   const { category, name, price } = req.body;
+  try {
+    if (!validations.validateMenu(category, name, price)) {
+      throw new Error("error");
+    }
+  } catch {
+    return res.json(errors.error.inputError);
+  }
   const updateItemObj = new Menu.item({ name: name, price: price });
   let existingCategory = await Menu.menu.findOne({ category: category });
 
@@ -95,7 +110,14 @@ exports.patchMenuItem = async (req, res, next) => {
   return res.json(successes.success.updated);
 };
 exports.deleteMenuItem = async (req, res, next) => {
-    const { category, name} = req.body;
+  const { category, name, price } = req.body;
+  try {
+    if (!validations.validateMenu(category, name, price)) {
+      throw new Error("error");
+    }
+  } catch {
+    return res.json(errors.error.inputError);
+  }
 
   let existingCategory = await Menu.menu.findOne({ category: category });
 

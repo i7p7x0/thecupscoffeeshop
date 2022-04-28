@@ -4,7 +4,7 @@
   @include paddingAllSides10px;
 }
 
-.home-childhome-content {
+.home-content {
   @include marginAllSides10px;
 }
 
@@ -22,7 +22,7 @@
     }
   }
 
-  .home-childhome-content {
+  .home-content {
     display: flex;
     justify-content: center;
     align-items: center;

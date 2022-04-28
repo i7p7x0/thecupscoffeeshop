@@ -5,8 +5,6 @@ const contactController = require("../controllers/contactController");
 router
   .route("/")
   .get(contactController.getContact)
-  .post(contactController.postContact)
-  .patch(contactController.patchContact)
-  .delete(contactController.deleteContact);
+  .patch(contactController.patchContact);
 
 module.exports = router;
